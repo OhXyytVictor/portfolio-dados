@@ -1,0 +1,22 @@
+# Ambientes Virtuais Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Arquivos de Sistema e IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# DBeaver
+.dbeaver/
+*.bak
+
+# Dados sensíveis e credenciais
+.env
+secrets.json
+*.pem
