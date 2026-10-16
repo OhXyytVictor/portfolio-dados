@@ -24,11 +24,11 @@ SELECT
     o.order_estimated_delivery_date,
     -- Cálculo de dias para entrega real vs estimada
     ROUND(
-        EXTRACT(EPOCH FROM (o.order_delivered_customer_date - o.order_purchase_timestamp)) / 86400, 
+        (EXTRACT(EPOCH FROM (o.order_delivered_customer_date - o.order_purchase_timestamp)) / 86400)::NUMERIC, 
         1
     ) AS dias_para_entrega,
     ROUND(
-        EXTRACT(EPOCH FROM (o.order_delivered_customer_date - o.order_estimated_delivery_date)) / 86400, 
+        (EXTRACT(EPOCH FROM (o.order_delivered_customer_date - o.order_estimated_delivery_date)) / 86400)::NUMERIC, 
         1
     ) AS dias_atraso,
     oi.order_item_id,
@@ -63,13 +63,13 @@ CREATE OR REPLACE VIEW olist.vw_sla_logistico_uf AS
 SELECT 
     customer_state AS estado_destino,
     COUNT(DISTINCT order_id) AS total_pedidos_entregues,
-    ROUND(AVG(dias_para_entrega), 1) AS media_dias_entrega,
-    ROUND(AVG(valor_frete), 2) AS frete_medio,
+    ROUND(AVG(dias_para_entrega)::NUMERIC, 1) AS media_dias_entrega,
+    ROUND(AVG(valor_frete)::NUMERIC, 2) AS frete_medio,
     ROUND(
         (COUNT(CASE WHEN dias_atraso > 0 THEN 1 END)::NUMERIC / COUNT(DISTINCT order_id)) * 100, 
         2
     ) AS percentual_pedidos_com_atraso,
-    ROUND(AVG(review_score), 2) AS media_avaliacao
+    ROUND(AVG(review_score)::NUMERIC, 2) AS media_avaliacao
 FROM olist.vw_pedidos_detalhados
 WHERE order_status = 'delivered' 
   AND dias_para_entrega IS NOT NULL
