@@ -56,7 +56,10 @@ def generate_chart_1(conn):
     ax.set_ylabel("Valores em Milhares de Reais (R$ K)", fontsize=10)
     ax.set_xticks(x)
     ax.set_xticklabels(["Neon Protocol (2D Roguelike)", "Aetheria (3D Action RPG)"], fontsize=10, fontweight="bold")
-    ax.legend(frameon=False, loc="upper right", fontsize=9)
+    ax.set_ylim(0, 1500)
+    
+    # Legenda horizontal no topo para evitar colisao com as barras
+    ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, 1.12), ncol=3, fontsize=8.8)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.grid(axis="y", linestyle="--", alpha=0.3, color="#94a3b8")
@@ -66,7 +69,7 @@ def generate_chart_1(conn):
             height = rect.get_height()
             ax.annotate(f"R$ {height:.0f}K",
                         xy=(rect.get_x() + rect.get_width() / 2, height),
-                        xytext=(0, 4),
+                        xytext=(0, 5),
                         textcoords="offset points",
                         ha="center", va="bottom", fontsize=8.5, fontweight="bold")
 
@@ -75,11 +78,11 @@ def generate_chart_1(conn):
     autolabel(rects3)
 
     plt.title("P&L Comparativo: Escopo Focado (Neon Protocol) vs. Escopo Inflado (Aetheria)", 
-              fontsize=11.5, fontweight="bold", pad=16, loc="left", color="#0f172a")
+              fontsize=11.5, fontweight="bold", pad=30, loc="left", color="#0f172a")
 
     output_path = os.path.join(OUTPUT_DIR, "01_pl_comparativo_jogos.png")
     plt.tight_layout()
-    plt.savefig(output_path)
+    plt.savefig(output_path, bbox_inches="tight")
     plt.close()
     print(f" [PASS] Grafico 1 salvo em: {output_path}")
 
@@ -100,12 +103,13 @@ def generate_chart_2(conn):
     ax.plot(x_indices, df["saldo_k"], color="#2563eb", linewidth=2.4, marker="o", markersize=4, label="Saldo de Caixa")
     ax.axhline(0, color="#ef4444", linestyle="--", linewidth=1.2, alpha=0.8, label="Linha de Insolvencia (R$ 0)")
 
-    # Destaque do Vale da Morte em maio/2026 (-R$ 38.4K)
+    # Destaque do Ponto Mais Baixo de Caixa
     min_idx = df["saldo_k"].idxmin()
     min_val = df.loc[min_idx, "saldo_k"]
+    min_mes = df.loc[min_idx, "ano_mes"]
     ax.scatter([min_idx], [min_val], color="#ef4444", s=70, zorder=5)
-    ax.annotate(f"Vale da Morte (Mai/2026)\nR$ {min_val:.1f}K (Insolvencia Iminente)",
-                xy=(min_idx, min_val), xytext=(min_idx - 5, min_val + 120),
+    ax.annotate(f"Ponto Mais Baixo ({min_mes})\nR$ {min_val:.1f}K (Pre-Lancamento)",
+                xy=(min_idx, min_val), xytext=(min_idx - 5, min_val + 130),
                 arrowprops=dict(facecolor="#ef4444", shrink=0.08, width=1.2, headwidth=6),
                 fontsize=8.5, fontweight="bold", color="#dc2626")
 
