@@ -302,8 +302,9 @@ FROM metricas_finais;
 │   │   ├── 01_pl_comparativo_jogos.png
 │   │   ├── 02_evolucao_caixa_burn_rate.png
 │   │   └── 03_custo_dev_vs_retorno_copia.png
-│   ├── DATA_QUALITY_REPORT.md               # Auditoria de integridade e dados
-│   └── ROTEIRO_PITCH_ESTUDIO.md             # Script executivo de pitch (5 minutos)
+│   ├── dashboard_estudio.html               # Painel tatico interativo com abas e simulador
+│   ├── DATA_QUALITY_REPORT.md               # Auditoria de integridade e dados (100% de conformidade)
+│   └── ROTEIRO_PITCH_ESTUDIO.md             # Script executivo de pitch (5 minutos para conselho)
 ├── pipeline_etl/
 │   ├── 01_seed_studio_data.py               # Ingestao das 6 tabelas no PostgreSQL
 │   ├── 02_data_quality_check.py             # Testes automatizados de qualidade
@@ -315,7 +316,7 @@ FROM metricas_finais;
 └── README.md
 ```
 
-#### 5. Como Executar Este Projeto
+#### 5. Como Executar e Explorar Este Projeto
 
 1. Clone o repositório:
    ```bash
@@ -330,18 +331,20 @@ FROM metricas_finais;
    ```bash
    python pipeline_etl/01_seed_studio_data.py
    ```
-4. Execute as constraints e views no PostgreSQL via DBeaver ou script:
-   ```bash
-   # Pode ser executado abrindo a pasta sql/ no DBeaver
-   ```
-5. Execute os testes de qualidade de dados:
+4. Execute os testes de qualidade de dados (Data Quality):
    ```bash
    python pipeline_etl/02_data_quality_check.py
    ```
-6. Gere os gráficos analíticos em alta resolução:
+5. Gere os gráficos analíticos em alta resolução:
    ```bash
    python pipeline_etl/generate_studio_charts.py
    ```
+6. **Exploração no DBeaver:**
+   * Os arquivos SQL já estão sincronizados no workspace do DBeaver em:  
+     `General > Scripts > portfolio-dados > 03-indie-game-studio-analytics > sql`.
+   * A conexão com o banco de dados e o schema `estudio_games` já estão pré-configurados para execução direta das queries.
+7. **Dashboard Interativo no Navegador:**
+   * Abra o arquivo [`docs/dashboard_estudio.html`](./docs/dashboard_estudio.html) em qualquer navegador web para explorar as abas executiva e tática, além de utilizar o simulador paramétrico do Jogo 3 em tempo real.
 
 <br>
 </details>
