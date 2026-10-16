@@ -10,27 +10,16 @@
 
 Este projeto investiga o comportamento de compra, a experiência do cliente e os gargalos logísticos no varejo de jogos e periféricos. 
 
-Adotando técnicas de **Data Storytelling executivo**, a comunicação está modularizada em três visões independentes para atender a diferentes momentos de reunião e perfis de liderança. Clique no título para expandir a opção desejada:
+Adotando técnicas de **Data Storytelling Estratégico**, a comunicação é modularizada em três visões que refletem as **três camadas corporativas** (Estratégica, Tática e Operacional), aplicando o framework dos **4 C's (Contexto, Conflito, Consequência e Conclusão/Recomendação)** para conectar a engenharia de dados diretamente à tomada de decisão de negócio. Clique no título para expandir a visão desejada:
 
 ---
 
 <details>
-<summary><h3>1. Apresentação Executiva (Leitura: 5 a 10 min)</h3>
-<i>Direcionada a diretores, acionistas e comitês executivos. Estrutura focada em diagnóstico, persona, gráficos com conclusões ativas e business case financeiro.</i></summary>
+<summary><h3>1. Visão Estratégica (C-Level e Conselho): Apresentação Executiva (5 a 10 min)</h3>
+<i>Direcionada a diretores, acionistas e comitês executivos. Estrutura orientada pelos 4 C's: Contexto de faturamento, Conflito logístico, Consequência de churn e Conclusão/Recomendação com ROI.</i></summary>
 <br>
 
-#### A Jornada do Cliente: A História de Lucas (24 anos, Salvador/BA)
-Para compreender os números de forma tangível, analisamos a jornada típica do consumidor de tecnologia no Brasil através da persona de Lucas:
-
-Lucas trabalha com programação, joga competitivamente e decide adquirir um console de última geração e um headset no lançamento. Ele acessa a plataforma, é atraído pelo catálogo e adiciona os itens ao carrinho (compra de ticket elevado). 
-
-No momento de fechar o pedido, depara-se com duas barreiras: o frete para a Bahia custa mais de R$ 40,00 e o prazo estimado ultrapassa 20 dias úteis. Apesar do custo, ele conclui a compra parcelada no cartão. No entanto, a transportadora atrasa mais 10 dias além do combinado. A ansiedade do lançamento se transforma em frustração: Lucas avalia a experiência com **nota 1**, abre dois chamados no suporte e jura nunca mais comprar na plataforma, cancelando qualquer compra futura de jogos.
-
-Essa história resume a causa raiz dos gargalos diagnosticados abaixo.
-
----
-
-### Indicador 01: Faturamento e Potencial de Mercado
+### 1. Contexto: O Mercado Gamer e Potencial de Faturamento
 
 # R$ 1.069.419,54
 **Receita bruta acumulada no segmento gamer (consoles, mídias físicas e periféricos)**
@@ -46,7 +35,11 @@ Essa história resume a causa raiz dos gargalos diagnosticados abaixo.
 
 ---
 
-### Indicador 02: O Custo do Atraso na Experiência do Cliente
+### 2. Conflito: A Fricção Logística e a Jornada de Lucas (24 anos, Salvador/BA)
+
+Para tangibilizar o conflito enfrentado pelo negócio, analisamos a jornada típica do consumidor através da persona de Lucas:
+
+Lucas trabalha com programação, joga competitivamente e adquire um console e um headset no lançamento. No fechamento da compra, depara-se com frete superior a R$ 40,00 e prazo de 20 dias úteis. A transportadora atrasa mais 10 dias. A expectativa do lançamento se converte em quebra de confiança: Lucas avalia a experiência com **nota 1**, abre chamados e abandona a plataforma, cessando compras futuras de jogos.
 
 # -38% na Satisfação (4,26 → 2,65)
 **Queda direta na nota média de avaliação gerada pelo descumprimento do prazo de entrega**
@@ -62,7 +55,7 @@ Essa história resume a causa raiz dos gargalos diagnosticados abaixo.
 
 ---
 
-### Indicador 03: A Disparidade Logística Regional
+### 3. Consequência: A Disparidade Regional e o Custo da Inação
 
 # 8,4 Dias vs. 24,5 Dias
 **Diferença crítica no tempo médio de entrega entre o Sudeste e a Região Norte**
@@ -71,15 +64,9 @@ Essa história resume a causa raiz dos gargalos diagnosticados abaixo.
 
 ![Disparidade Logistica Regional](./docs/img/03_sla_regional_frete.png)
 
-#### Detalhamento de Apoio
-* **Taxa de Atrasos:** Sudeste registra apenas 5,2% de atrasos; Sul 7,9%; Nordeste atinge 16,8%; e Norte registra 22,4% de pedidos fora do prazo estimado.
-* **Barreira de Conversão:** O custo elevado do frete em regiões afastadas desestimula a compra de mídias físicas e periféricos individuais, concentrando vendas apenas quando há cupons de desconto.
+#### O Trade-off Financeiro (Custo de Inação vs. Retorno da Ação)
 
----
-
-### O Business Case: Análise de Custo vs. Retorno (Trade-off Financeiro)
-
-Para embasar a decisão da diretoria, calculamos o retorno sobre o investimento comparando o custo de inação com o custo da solução proposta:
+Calculamos o retorno sobre o investimento comparando o custo de inação com o custo da solução proposta:
 
 | Componente | Cenário Atual (Inação) | Cenário com a Solução (Plano de Ação) | Impacto Financeiro Líquido |
 | :--- | :--- | :--- | :--- |
@@ -89,7 +76,7 @@ Para embasar a decisão da diretoria, calculamos o retorno sobre o investimento 
 
 ---
 
-### Planos de Ação Imediatos
+### 4. Conclusão e Recomendação: Planos de Ação Imediatos
 
 1. **Roteamento Expresso Regional (Foco Nordeste e Norte)**
    * **Ação:** Estabelecer estoque avançado descentralizado dos 20 produtos líderes de venda de games em centros logísticos parceiros em Recife e Salvador.
@@ -109,8 +96,8 @@ Para embasar a decisão da diretoria, calculamos o retorno sobre o investimento 
 ---
 
 <details>
-<summary><h3>2. Resumo Operacional (Leitura: 15 min)</h3>
-<i>Direcionada a coordenadores de produto, marketing e operações. Tabelas comparativas de categorias, métricas de frete e planejamento tático.</i></summary>
+<summary><h3>2. Visão Tática (Média Gestão / Produto e Operações): Resumo Tático (15 min)</h3>
+<i>Direcionada a gerentes e coordenadores de produto, marketing e operações. Desdobramento de categorias, SLA regional e metas trimestrais (OKRs).</i></summary>
 <br>
 
 #### 1. Desempenho por Linha de Produto
@@ -148,8 +135,8 @@ Para embasar a decisão da diretoria, calculamos o retorno sobre o investimento 
 ---
 
 <details>
-<summary><h3>3. Relatório Técnico Completo (Deep Dive)</h3>
-<i>Direcionada a líderes técnicos, engenheiros de dados e auditores. Arquitetura, modelo relacional, código SQL comentado e amostras de dados.</i></summary>
+<summary><h3>3. Visão Operacional (Engenharia de Dados): Relatório Técnico (Deep Dive)</h3>
+<i>Direcionada a líderes técnicos, engenheiros de dados e auditores. Arquitetura de ingestão, modelo relacional (DER), consultas SQL estruturadas e auditoria de dados.</i></summary>
 <br>
 
 #### 1. Arquitetura da Solução

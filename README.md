@@ -11,10 +11,10 @@
 
 Repositório dedicado a projetos práticos de engenharia e análise de dados. Aliando a formação em desenvolvimento de jogos ao estudo de arquitetura de dados e bancos relacionais, os projetos aqui documentados cobrem o ciclo completo de dados: ingestão (ETL), modelagem relacional, otimização de consultas e inteligência de negócios.
 
-Cada projeto é documentado em três níveis de profundidade:
-1. **Apresentação Executiva (5 a 10 min):** Diagnóstico rápido e planos de ação direcionados a gestores e liderança.
-2. **Resumo Operacional (15 min):** Tabelas e métricas comparativas voltadas para analistas e equipes de produto.
-3. **Relatório Técnico Completo (Deep Dive):** Diagramas de arquitetura, modelagem DER, consultas SQL avançadas e documentação do pipeline.
+Cada projeto é documentado em três níveis de profundidade, refletindo as três camadas organizacionais:
+1. **Visão Estratégica (5 a 10 min):** Diagnóstico de negócio estruturado nos 4 C's (Contexto, Conflito, Consequência, Conclusão) e business case com ROI direcionados a diretores e acionistas.
+2. **Visão Tática (15 min):** Tabelas detalhadas de categorias, métricas de frete e planos de ação trimestrais direcionados a gestores de produto e operações.
+3. **Visão Operacional (Deep Dive):** Diagramas de arquitetura, modelagem DER, scripts ETL em Python e consultas SQL avançadas com Window Functions.
 
 ---
 
