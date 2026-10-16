@@ -90,6 +90,21 @@ Calculamos o retorno sobre o investimento comparando o custo de inação com o c
    * **Ação:** Criação de combos de hardware + jogos físicos ou periféricos com desconto progressivo direto no carrinho de compras.
    * **Impacto:** Elevação estimada de 15% no tíquete médio e aceleração do giro de mídias físicas.
 
+---
+
+### 5. Antecipação de Dúvidas e Objeções da Liderança
+
+Antecipar as perguntas críticas que um comitê executivo fará reduz atritos e demonstra domínio completo do estudo:
+
+* **"Por que investir na malha do Nordeste/Norte se o Sudeste concentra mais de 70% das vendas?"**  
+  O Sudeste já opera em nível de serviço estabilizado (8,4 dias e apenas 5,2% de atrasos). As regiões Norte e Nordeste representam o maior foco de destruição de marca: 45,8% dos pedidos atrasados viram avaliações nota 1 e geram churn irreversível. Proteger essa base retém receita sem elevar o Custo de Aquisição de Clientes (CAC).
+
+* **"O cupom de R$ 30,00 do Gamer Shield não canibaliza a nossa margem?"**  
+  Não. O tíquete médio em consoles e jogos é de R$ 138,49. O cupom é condicionado a uma compra mínima subsequente, convertendo um cliente insatisfeito em uma segunda transação lucrativa. O custo de R$ 30,00 é substancialmente menor do que o investimento em mídia de performance necessário para atrair um novo cliente equivalente.
+
+* **"Como foi garantida a integridade dos dados para não capturar ruídos pontuais?"**  
+  A modelagem filtrou apenas transações com status final `delivered`, excluindo cancelamentos pré-envio, e cruzou carimbos de data/hora oficiais das transportadoras com as datas prometidas na compra.
+
 <br>
 </details>
 
