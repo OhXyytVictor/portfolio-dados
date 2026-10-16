@@ -185,14 +185,122 @@ def generate_chart_3(conn):
     plt.close()
     print(f" [PASS] Grafico 3 salvo em: {output_path}")
 
+def generate_chart_4(conn):
+    print("[INFO] Gerando Grafico 4: Decomposicao Detalhada de Gastos (Marketing, Salarios e Overhead)...")
+    
+    # 1. Marketing
+    q_mkt = """
+    SELECT 
+        CASE 
+            WHEN j.titulo LIKE '%Neon%' THEN 'Neon: ' || m.canal
+            ELSE 'Aetheria: ' || m.canal
+        END AS canal_label,
+        m.valor_investido / 1000.0 AS valor_k,
+        j.titulo
+    FROM estudio_games.despesas_marketing m
+    JOIN estudio_games.jogos j ON m.jogo_id = j.jogo_id
+    WHERE j.status = 'Lancado'
+    ORDER BY j.jogo_id ASC, m.valor_investido ASC;
+    """
+    df_mkt = pd.read_sql(q_mkt, conn)
+
+    # 2. Folha
+    q_folha = """
+    SELECT 
+        CASE 
+            WHEN cargo LIKE '%Programmer%' THEN 'Engenharia / Codigo'
+            WHEN cargo LIKE '%Artist%' OR cargo LIKE '%Animator%' THEN 'Arte e Animacao'
+            WHEN cargo LIKE '%Director%' OR (cargo LIKE '%Designer%' AND cargo NOT LIKE '%Sound%' AND cargo NOT LIKE '%Level%') THEN 'Direcao e Game Design'
+            WHEN cargo LIKE '%Producer%' OR cargo LIKE '%Community%' THEN 'Producao e Comunidade'
+            ELSE 'Audio, QA e Level Design'
+        END AS depto,
+        SUM(salario_mensal) / 1000.0 AS folha_k,
+        ROUND((SUM(salario_mensal) * 100.0 / (SELECT SUM(salario_mensal) FROM estudio_games.equipe_colaboradores))::numeric, 1) as pct
+    FROM estudio_games.equipe_colaboradores
+    GROUP BY 1
+    ORDER BY folha_k ASC;
+    """
+    df_folha = pd.read_sql(q_folha, conn)
+
+    # 3. Overhead
+    q_over = """
+    SELECT 
+        categoria,
+        SUM(valor) / 1000.0 AS total_k,
+        ROUND((SUM(valor) * 100.0 / (SELECT SUM(valor) FROM estudio_games.custos_operacionais))::numeric, 1) as pct
+    FROM estudio_games.custos_operacionais
+    GROUP BY categoria
+    ORDER BY total_k ASC;
+    """
+    df_over = pd.read_sql(q_over, conn)
+
+    fig = plt.figure(figsize=(12, 9), dpi=200)
+    gs = fig.add_gridspec(2, 2, height_ratios=[1.15, 1], hspace=0.42, wspace=0.55)
+
+    # Subplot 1: Marketing (Topo inteiro)
+    ax_mkt = fig.add_subplot(gs[0, :])
+    colors_mkt = ["#2563eb" if "Neon" in lbl else "#ef4444" for lbl in df_mkt["canal_label"]]
+    bars_mkt = ax_mkt.barh(df_mkt["canal_label"], df_mkt["valor_k"], color=colors_mkt, height=0.6)
+    ax_mkt.set_xlim(0, 72)
+    ax_mkt.set_xlabel("Valor Investido em Campanha (R$ K)", fontsize=9, labelpad=6)
+    ax_mkt.set_title("1. Destrinchamento de Marketing: Canais Eficientes (Azul / Neon) vs. Dispersao de Alto Custo (Vermelho / Aetheria)", 
+                     fontsize=10.5, fontweight="bold", loc="left", pad=10, color="#0f172a")
+    ax_mkt.spines["top"].set_visible(False)
+    ax_mkt.spines["right"].set_visible(False)
+    ax_mkt.grid(axis="x", linestyle="--", alpha=0.3)
+    for b in bars_mkt:
+        w = b.get_width()
+        ax_mkt.text(w + 1.2, b.get_y() + b.get_height()/2, f"R$ {w:.1f}K", 
+                    va="center", ha="left", fontsize=8.5, fontweight="bold", color="#1e293b")
+
+    # Subplot 2: Folha Salarial (Inferior Esquerdo)
+    ax_folha = fig.add_subplot(gs[1, 0])
+    bars_folha = ax_folha.barh(df_folha["depto"], df_folha["folha_k"], color="#3b82f6", height=0.55)
+    ax_folha.set_xlim(0, 32)
+    ax_folha.set_xlabel("Folha Salarial Mensal (R$ K)", fontsize=8.5, labelpad=6)
+    ax_folha.set_title("2. Salarios por Departamento (R$ 66,8K/mes)", 
+                       fontsize=9.5, fontweight="bold", loc="left", pad=10, color="#0f172a")
+    ax_folha.spines["top"].set_visible(False)
+    ax_folha.spines["right"].set_visible(False)
+    ax_folha.grid(axis="x", linestyle="--", alpha=0.3)
+    for b, pct in zip(bars_folha, df_folha["pct"]):
+        w = b.get_width()
+        ax_folha.text(w + 0.6, b.get_y() + b.get_height()/2, f"R$ {w:.1f}K ({pct}%)", 
+                     va="center", ha="left", fontsize=8, fontweight="bold", color="#1e293b")
+
+    # Subplot 3: Overhead Operacional (Inferior Direito)
+    ax_over = fig.add_subplot(gs[1, 1])
+    bars_over = ax_over.barh(df_over["categoria"], df_over["total_k"], color="#64748b", height=0.55)
+    ax_over.set_xlim(0, 145)
+    ax_over.set_xlabel("Custo Acumulado em 24 Meses (R$ K)", fontsize=8.5, labelpad=6)
+    ax_over.set_title("3. Contas Fixas e Infraestrutura (Total R$ 303,5K)", 
+                      fontsize=9.5, fontweight="bold", loc="left", pad=10, color="#0f172a")
+    ax_over.spines["top"].set_visible(False)
+    ax_over.spines["right"].set_visible(False)
+    ax_over.grid(axis="x", linestyle="--", alpha=0.3)
+    for b, pct in zip(bars_over, df_over["pct"]):
+        w = b.get_width()
+        ax_over.text(w + 2.5, b.get_y() + b.get_height()/2, f"R$ {w:.1f}K ({pct}%)", 
+                    va="center", ha="left", fontsize=8, fontweight="bold", color="#1e293b")
+
+    plt.suptitle("Decomposicao Granular dos Gastos do Estudio: Marketing, Equipe e Infraestrutura", 
+                 fontsize=12, fontweight="bold", y=0.98, color="#0f172a")
+
+    output_path = os.path.join(OUTPUT_DIR, "04_decomposicao_gastos_destrinchados.png")
+    plt.savefig(output_path, bbox_inches="tight")
+    plt.close()
+    print(f" [PASS] Grafico 4 salvo em: {output_path}")
+
 def main():
     set_minimal_style()
     conn = psycopg2.connect(DATABASE_URI)
     generate_chart_1(conn)
     generate_chart_2(conn)
     generate_chart_3(conn)
+    generate_chart_4(conn)
     conn.close()
     print("[INFO] Todos os graficos analiticos do estudio foram gerados com sucesso!")
 
 if __name__ == "__main__":
     main()
+

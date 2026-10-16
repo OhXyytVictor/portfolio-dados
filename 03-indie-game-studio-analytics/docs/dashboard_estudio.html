@@ -118,6 +118,25 @@
     .badge-success { background: rgba(16, 185, 129, 0.15); color: #34d399; }
     .badge-warning { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
     .badge-info { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
+    .info-card {
+      background: #0d131f;
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .info-card strong { color: #fff; }
+    .info-card.warning { border-left-color: #f59e0b; }
+    .info-card.success { border-left-color: #10b981; }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
     /* Estilos do Simulador */
     .simulator-container {
       display: grid;
@@ -176,7 +195,7 @@
 
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchTab('tab-exec')">1. Apresentação Executiva (5 Min)</button>
-      <button class="tab-btn" onclick="switchTab('tab-tatica')">2. Análise Tática e Custos de Equipe</button>
+      <button class="tab-btn" onclick="switchTab('tab-tatica')">2. Análise Tática e Gastos Destrinchados</button>
       <button class="tab-btn" onclick="switchTab('tab-simulador')">3. Simulador de Viabilidade (Project Shift)</button>
     </div>
 
@@ -271,81 +290,305 @@
       </div>
     </div>
 
-    <!-- TAB 2: ANALISE TATICA E EQUIPE -->
+    <!-- TAB 2: ANALISE TATICA E GASTOS DESTRINCHADOS -->
     <div id="tab-tatica" class="tab-content">
-      <div class="charts-grid">
-        <div class="chart-box">
-          <div class="chart-title">Decomposição das Contas e Overhead do Estúdio (R$ 12,6K a R$ 13,7K/mês)</div>
-          <table>
-            <thead>
-              <tr>
-                <th>Categoria</th>
-                <th>Descrição</th>
-                <th>Valor Mensal</th>
-                <th>Impacto</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Infraestrutura</strong></td>
-                <td>Coworking e Escritório Base</td>
-                <td>R$ 4.500,00</td>
-                <td>Reuniões de sprint presenciais e testes</td>
-              </tr>
-              <tr>
-                <td><strong>Software & Licenças</strong></td>
-                <td>Unity Pro, IDEs JetBrains, Adobe, Jira, GitHub</td>
-                <td>R$ 3.900,00</td>
-                <td>Ferramental de desenvolvimento e pipeline</td>
-              </tr>
-              <tr>
-                <td><strong>Cloud & Servidores</strong></td>
-                <td>Servidores de Build, Perforce, Supabase e Backups</td>
-                <td>R$ 1.600,00</td>
-                <td>Integração contínua e versionamento seguro</td>
-              </tr>
-              <tr>
-                <td><strong>Jurídico & Contábil</strong></td>
-                <td>Assessoria de repasses de câmbio Steam/Nintendo</td>
-                <td>R$ 2.200,00</td>
-                <td>Compliance fiscal de repasses internacionais</td>
-              </tr>
-              <tr>
-                <td><strong>Hardware & DevKits</strong></td>
-                <td>Manutenção e aquisição de kits de consoles</td>
-                <td>R$ 400 a R$ 1.500</td>
-                <td>Reposição pontual de equipamentos</td>
-              </tr>
-            </tbody>
-          </table>
+      
+      <!-- 0. RESUMO MANTIDO: OS 3 PONTOS PRINCIPAIS -->
+      <div class="chart-box" style="margin-bottom: 25px;">
+        <div class="chart-title">Visão Consolidada: Comparativo dos Três Pontos Principais (Investimento, Receita Líquida e Lucro)</div>
+        <p class="section-desc">
+          Resumo executivo mantido nesta visão detalhada para referência contínua. Demonstra o retorno macro de cada projeto antes do destrinchamento granular dos gastos.
+        </p>
+        <div style="position: relative;">
+          <canvas id="chartPL_tatica" height="110"></canvas>
+        </div>
+        <div class="info-card">
+          <strong>Visão Consolidada dos Três Pontos Principais:</strong> Enquanto <em>Neon Protocol</em> demandou R$ 426,5K de investimento total e gerou R$ 814,1K de lucro líquido (ROI 2,91x com margem líquida de 65,6%), <em>Aetheria Chronicles</em> consumiu R$ 1.024,8K para retornar apenas R$ 34,1K de lucro líquido (ROI 1,03x e margem de 3,2%). Nas três seções abaixo, destrinchamos minuciosamente onde cada real foi alocado em Marketing, Salários da Equipe e Equipamentos/Contas Operacionais, com análises explicativas sob cada gráfico.
+        </div>
+      </div>
+
+      <!-- 1. DESTRINCHAMENTO DE MARKETING -->
+      <div class="chart-box" style="margin-bottom: 25px;">
+        <div class="chart-title">1. Destrinchamento de Despesas de Marketing: Canais Eficientes vs. Dispersão de Alto Custo</div>
+        <p class="section-desc">
+          Onde foi a verba de divulgação: comparação direta entre a estratégia enxuta de Neon Protocol (R$ 45.000,00) e a queima dispersa de Aetheria (R$ 160.000,00).
+        </p>
+        <div style="position: relative;">
+          <canvas id="chartMkt" height="150"></canvas>
+        </div>
+        
+        <div class="info-card warning">
+          <strong>Diagnóstico Tático de Marketing (Onde foi a verba):</strong> Em <em>Aetheria</em>, R$ 97.000,00 (60,7% do orçamento de R$ 160K) foram drenados por agência de relações públicas externa (R$ 42K) e animação em computação gráfica terceirizada (CGI de R$ 55K). Essas ações acumularam visualizações passivas em trailers, mas geraram conversão praticamente nula em wishlists ativas e compras reais, resultando em um Custo de Aquisição por Cópia (CAC) de R$ 8,00. Em contrapartida, <em>Neon Protocol</em> investiu R$ 45.000,00 focados em criadores de conteúdo do nicho roguelike (R$ 18,5K) e presença com demo jogável na Steam Next Fest (R$ 12,0K), alcançando um CAC de apenas R$ 1,06 por cópia vendida. <strong>Diretriz para o Jogo 3:</strong> 100% da verba será alocada em demo jogável polida e streamers de nicho tático.
         </div>
 
-        <div class="chart-box">
-          <div class="chart-title">Equipe do Estúdio (Folha Fixa: R$ 66.800,00 / 10 Membros)</div>
+        <table style="margin-top: 18px;">
+          <thead>
+            <tr>
+              <th>Jogo</th>
+              <th>Canal de Divulgação</th>
+              <th>Fase da Campanha</th>
+              <th>Valor Investido</th>
+              <th>% da Verba</th>
+              <th>Diagnóstico de Conversão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Neon Protocol</strong></td>
+              <td>Criadores de Nicho e Streamers</td>
+              <td>Lançamento</td>
+              <td>R$ 18.500,00</td>
+              <td>41,1%</td>
+              <td><span class="badge badge-success">Altíssima Conversão</span> Picos imediatos de vendas pós-lives.</td>
+            </tr>
+            <tr>
+              <td><strong>Neon Protocol</strong></td>
+              <td>Steam Next Fest (Demo Jogável)</td>
+              <td>Pré-Lançamento</td>
+              <td>R$ 12.000,00</td>
+              <td>26,7%</td>
+              <td><span class="badge badge-success">Custo-Benefício Máximo</span> 70% das adições à wishlist do jogo.</td>
+            </tr>
+            <tr>
+              <td><strong>Neon Protocol</strong></td>
+              <td>Trailer Gameplay e Redes Sociais</td>
+              <td>Lançamento</td>
+              <td>R$ 8.000,00</td>
+              <td>17,8%</td>
+              <td><span class="badge badge-info">Eficiente</span> Foco 100% em mecânicas reais de jogo.</td>
+            </tr>
+            <tr>
+              <td><strong>Neon Protocol</strong></td>
+              <td>Promoções Sazonais da Steam</td>
+              <td>Pós-Lançamento</td>
+              <td>R$ 6.500,00</td>
+              <td>14,4%</td>
+              <td><span class="badge badge-info">Cauda Longa</span> Sustentação contínua de receita residual.</td>
+            </tr>
+            <tr style="border-top: 2px solid var(--card-border);">
+              <td colspan="3"><strong>Total Neon Protocol</strong></td>
+              <td><strong>R$ 45.000,00</strong></td>
+              <td><strong>100,0%</strong></td>
+              <td><strong>CAC de R$ 1,06 &bull; 42.600 cópias vendidas</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Aetheria Chronicles</strong></td>
+              <td>Trailer Cinemático CGI Terceirizado</td>
+              <td>Pré-Lançamento</td>
+              <td>R$ 55.000,00</td>
+              <td>34,4%</td>
+              <td><span class="badge badge-warning">Queima de Caixa</span> Vídeo caro sem retenção em wishlist.</td>
+            </tr>
+            <tr>
+              <td><strong>Aetheria Chronicles</strong></td>
+              <td>Agência de Relações Públicas (PR)</td>
+              <td>Pré-Lançamento</td>
+              <td>R$ 42.000,00</td>
+              <td>26,3%</td>
+              <td><span class="badge badge-warning">Ineficiente</span> Cobertura de imprensa ofuscada por lançamentos AAA.</td>
+            </tr>
+            <tr>
+              <td><strong>Aetheria Chronicles</strong></td>
+              <td>Anúncios Pagos (Meta e Reddit)</td>
+              <td>Lançamento</td>
+              <td>R$ 38.000,00</td>
+              <td>23,8%</td>
+              <td><span class="badge badge-warning">CAC Alto</span> Custo por clique incompatível com tíquete médio.</td>
+            </tr>
+            <tr>
+              <td><strong>Aetheria Chronicles</strong></td>
+              <td>Influenciadores de Variedade (Genéricos)</td>
+              <td>Lançamento</td>
+              <td>R$ 25.000,00</td>
+              <td>15,6%</td>
+              <td><span class="badge badge-warning">Baixa Afinidade</span> Audiência sem perfil de compra de RPG denso.</td>
+            </tr>
+            <tr style="border-top: 2px solid var(--card-border);">
+              <td colspan="3"><strong>Total Aetheria Chronicles</strong></td>
+              <td><strong>R$ 160.000,00</strong></td>
+              <td><strong>100,0%</strong></td>
+              <td><strong>CAC de R$ 8,00 &bull; 20.000 cópias vendidas</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 2. DESTRINCHAMENTO DA EQUIPE E SALARIOS -->
+      <div class="chart-box" style="margin-bottom: 25px;">
+        <div class="chart-title">2. Destrinchamento da Folha Salarial da Equipe por Departamento (R$ 66.800,00 / Mês)</div>
+        <p class="section-desc">
+          Onde foram os recursos humanos: distribuição mensal do custo salarial entre as 5 disciplinas técnicas especializadas do estúdio.
+        </p>
+        <div class="charts-grid" style="margin-bottom: 10px;">
+          <div>
+            <canvas id="chartSalarios" height="190"></canvas>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Departamento</th>
+                  <th>Equipe</th>
+                  <th>Folha Mensal</th>
+                  <th>% Total</th>
+                  <th>Atribuição Principal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Engenharia de Software</strong></td>
+                  <td>3 profissionais</td>
+                  <td>R$ 21.800,00</td>
+                  <td>32,6%</td>
+                  <td>Arquitetura de engine, combate e integração Steam</td>
+                </tr>
+                <tr>
+                  <td><strong>Arte, Animação e Rig</strong></td>
+                  <td>3 profissionais</td>
+                  <td>R$ 19.200,00</td>
+                  <td>28,7%</td>
+                  <td>Concept art, modelagem, shaders e VFX</td>
+                </tr>
+                <tr>
+                  <td><strong>Áudio, QA e Level Design</strong></td>
+                  <td>2 profissionais</td>
+                  <td>R$ 10.500,00</td>
+                  <td>15,7%</td>
+                  <td>Trilha original, sonorização, testes e fases</td>
+                </tr>
+                <tr>
+                  <td><strong>Direção e Game Design</strong></td>
+                  <td>1 profissional</td>
+                  <td>R$ 9.500,00</td>
+                  <td>14,2%</td>
+                  <td>GDD, balanceamento numérico e cronograma</td>
+                </tr>
+                <tr>
+                  <td><strong>Produção e Comunidade</strong></td>
+                  <td>1 profissional</td>
+                  <td>R$ 5.800,00</td>
+                  <td>8,7%</td>
+                  <td>Gestão de sprints no Jira e suporte a players</td>
+                </tr>
+                <tr style="border-top: 2px solid var(--card-border);">
+                  <td><strong>Total Consolidado</strong></td>
+                  <td><strong>10 profissionais</strong></td>
+                  <td><strong>R$ 66.800,00</strong></td>
+                  <td><strong>100,0%</strong></td>
+                  <td><strong>Burn rate salarial básico mensal</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <strong>Diagnóstico Tático de Equipe (Onde foram os salários):</strong> A folha de pagamento fixa é de R$ 66.800,00 por mês para uma equipe de 10 colaboradores multidisciplinares. Na produção de <em>Neon Protocol</em> (2D), o escopo focado manteve o custo de desenvolvimento em R$ 8,96 por cópia vendida. Em <em>Aetheria</em>, a transição para 3D no Unreal 5 exigiu retrabalho extensivo de animação e rigging, elevando o custo de desenvolvimento para R$ 43,24 por cópia (+382%). A equipe possui maturidade técnica e não deve sofrer demissões; a otimização econômica para o Jogo 3 (<em>Project Shift</em>) consistirá no congelamento de escopo e foco na engine Unity 2.5D, na qual o time possui histórico de entrega no prazo.
+        </div>
+
+        <div style="margin-top: 22px;">
+          <div class="chart-title" style="font-size: 0.88rem;">Quadro Nominal Completo da Equipe (10 Colaboradores)</div>
           <table>
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Colaborador</th>
                 <th>Cargo / Especialidade</th>
                 <th>Nível</th>
                 <th>Salário Mensal</th>
+                <th>Data de Admissão</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Mariana Souza</td><td>Lead Programmer</td><td>Sênior</td><td>R$ 10.500,00</td></tr>
-              <tr><td>Lucas Silveira</td><td>Game Director / Lead GD</td><td>Sênior</td><td>R$ 9.500,00</td></tr>
-              <tr><td>Felipe Becker</td><td>Technical Artist & Animator</td><td>Sênior</td><td>R$ 8.800,00</td></tr>
-              <tr><td>Rodrigo Lima</td><td>Gameplay Programmer</td><td>Pleno</td><td>R$ 6.800,00</td></tr>
-              <tr><td>Camila Duarte</td><td>2D/3D Asset Artist</td><td>Pleno</td><td>R$ 6.200,00</td></tr>
-              <tr><td>Juliana Mendes</td><td>Producer & Community</td><td>Pleno</td><td>R$ 5.800,00</td></tr>
-              <tr><td>Guilherme Prado</td><td>Sound Designer & Composer</td><td>Pleno</td><td>R$ 5.500,00</td></tr>
-              <tr><td>Thiago Castro</td><td>QA Lead & Level Designer</td><td>Pleno</td><td>R$ 5.000,00</td></tr>
-              <tr><td>Andreia Fontes</td><td>Systems Programmer</td><td>Júnior</td><td>R$ 4.500,00</td></tr>
-              <tr><td>Beatriz Ramos</td><td>UI/UX & 2D Artist</td><td>Júnior</td><td>R$ 4.200,00</td></tr>
+              <tr><td>01</td><td>Lucas Silveira</td><td>Game Director / Lead Game Designer</td><td>Sênior</td><td>R$ 9.500,00</td><td>Nov/2024</td></tr>
+              <tr><td>02</td><td>Mariana Souza</td><td>Lead Programmer</td><td>Sênior</td><td>R$ 10.500,00</td><td>Nov/2024</td></tr>
+              <tr><td>03</td><td>Rodrigo Lima</td><td>Gameplay Programmer</td><td>Pleno</td><td>R$ 6.800,00</td><td>Nov/2024</td></tr>
+              <tr><td>04</td><td>Camila Duarte</td><td>2D/3D Concept & Asset Artist</td><td>Pleno</td><td>R$ 6.200,00</td><td>Nov/2024</td></tr>
+              <tr><td>05</td><td>Felipe Becker</td><td>Technical Artist & 3D Animator</td><td>Sênior</td><td>R$ 8.800,00</td><td>Dez/2024</td></tr>
+              <tr><td>06</td><td>Guilherme Prado</td><td>Sound Designer & Composer</td><td>Pleno</td><td>R$ 5.500,00</td><td>Dez/2024</td></tr>
+              <tr><td>07</td><td>Beatriz Ramos</td><td>UI/UX & 2D Artist</td><td>Júnior</td><td>R$ 4.200,00</td><td>Jan/2025</td></tr>
+              <tr><td>08</td><td>Juliana Mendes</td><td>Associate Producer & Community Manager</td><td>Pleno</td><td>R$ 5.800,00</td><td>Abr/2025</td></tr>
+              <tr><td>09</td><td>Thiago Castro</td><td>QA Lead & Level Designer</td><td>Pleno</td><td>R$ 5.000,00</td><td>Mar/2025</td></tr>
+              <tr><td>10</td><td>Andreia Fontes</td><td>Gameplay & Systems Programmer</td><td>Júnior</td><td>R$ 4.500,00</td><td>Ago/2025</td></tr>
             </tbody>
           </table>
         </div>
       </div>
+
+      <!-- 3. DESTRINCHAMENTO DE CONTAS E EQUIPAMENTOS -->
+      <div class="chart-box">
+        <div class="chart-title">3. Destrinchamento de Contas Operacionais, Equipamento e Infraestrutura (R$ 303.500,00 em 24 Meses)</div>
+        <p class="section-desc">
+          Onde foram as contas do estúdio: mapeamento granular dos gastos com infraestrutura física, licenças de software e conformidade fiscal nos 2 anos de operação.
+        </p>
+        <div class="charts-grid" style="margin-bottom: 10px;">
+          <div>
+            <canvas id="chartOverhead" height="200"></canvas>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Categoria</th>
+                  <th>Custo 24 Meses</th>
+                  <th>Média Mensal</th>
+                  <th>% Total</th>
+                  <th>Oportunidade de Economia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Infraestrutura & Coworking</strong></td>
+                  <td>R$ 108.000,00</td>
+                  <td>R$ 4.500,00</td>
+                  <td>35,6%</td>
+                  <td>Redução de área física para modelo híbrido</td>
+                </tr>
+                <tr>
+                  <td><strong>Software & Licenças</strong></td>
+                  <td>R$ 85.900,00</td>
+                  <td>R$ 3.579,17</td>
+                  <td>28,3%</td>
+                  <td><span class="badge badge-success">Corte Imediato</span> R$ 13.200/ano em licenças 3D ociosas</td>
+                </tr>
+                <tr>
+                  <td><strong>Assessoria Jurídico-Contábil</strong></td>
+                  <td>R$ 52.800,00</td>
+                  <td>R$ 2.200,00</td>
+                  <td>17,4%</td>
+                  <td>Compliance de câmbio internacional (Steam/Nintendo)</td>
+                </tr>
+                <tr>
+                  <td><strong>Cloud, Servidores e Backups</strong></td>
+                  <td>R$ 38.400,00</td>
+                  <td>R$ 1.600,00</td>
+                  <td>12,7%</td>
+                  <td>Otimização de pipelines de build e instâncias nuvem</td>
+                </tr>
+                <tr>
+                  <td><strong>Hardware & DevKits</strong></td>
+                  <td>R$ 18.400,00</td>
+                  <td>R$ 766,67</td>
+                  <td>6,1%</td>
+                  <td>Kits de consoles amortizados; compras congeladas</td>
+                </tr>
+                <tr style="border-top: 2px solid var(--card-border);">
+                  <td><strong>Total de Contas Fixas</strong></td>
+                  <td><strong>R$ 303.500,00</strong></td>
+                  <td><strong>R$ 12.645,83</strong></td>
+                  <td><strong>100,0%</strong></td>
+                  <td><strong>Meta de redução para R$ 10.200,00/mês</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="info-card success">
+          <strong>Diagnóstico Tático de Equipamentos e Infraestrutura (Onde foram as contas):</strong> O estúdio desembolsou R$ 303.500,00 em contas fixas nos 24 meses (média de R$ 12.645/mês). A auditoria identificou um desperdício contínuo de R$ 1.100,00 mensais em licenças ociosas de software de modelagem 3D (Maya, ZBrush e assentos extras de Unreal). O cancelamento imediato destas licenças economizará R$ 13.200,00 por ano. Somado à transição para modelo híbrido no coworking, o overhead mensal cairá de R$ 12,6K para R$ 10,2K/mês, estendendo a autonomia do caixa (runway) de 8,3 meses para mais de 12 meses.
+        </div>
+      </div>
+
     </div>
 
     <!-- TAB 3: SIMULADOR DE VIABILIDADE -->
@@ -434,11 +677,22 @@
   </div>
 
   <script>
+    let taticaChartsInitialized = false;
+
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
+      
+      const btns = document.querySelectorAll('.tab-btn');
+      if (tabId === 'tab-exec' && btns[0]) btns[0].classList.add('active');
+      if (tabId === 'tab-tatica' && btns[1]) btns[1].classList.add('active');
+      if (tabId === 'tab-simulador' && btns[2]) btns[2].classList.add('active');
+
+      if (tabId === 'tab-tatica' && !taticaChartsInitialized) {
+        initTaticaCharts();
+        taticaChartsInitialized = true;
+      }
     }
 
     function formatBRL(val) {
@@ -477,8 +731,128 @@
       document.getElementById('res-margem').innerText = `${margem.toFixed(1)}%`;
     }
 
+    function initTaticaCharts() {
+      // 0. PL Comparativo Mantido na Visao Tatica
+      const ctxPLTatica = document.getElementById('chartPL_tatica').getContext('2d');
+      new Chart(ctxPLTatica, {
+        type: 'bar',
+        data: {
+          labels: ['Neon Protocol (2D Roguelike)', 'Aetheria Chronicles (3D RPG)'],
+          datasets: [
+            { label: 'Investimento Total (Dev + Mkt)', data: [426.5, 1024.8], backgroundColor: '#64748b', borderRadius: 4 },
+            { label: 'Receita Líquida (Pós-Lojas)', data: [1240.6, 1058.9], backgroundColor: '#2563eb', borderRadius: 4 },
+            { label: 'Lucro Líquido Final', data: [814.1, 34.1], backgroundColor: '#10b981', borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { labels: { color: '#94a3b8' } } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+            y: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } }
+          }
+        }
+      });
+
+      // 1. Marketing Breakdown Chart
+      const ctxMkt = document.getElementById('chartMkt').getContext('2d');
+      new Chart(ctxMkt, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Neon: Criadores de Nicho',
+            'Neon: Steam Next Fest (Demo)',
+            'Neon: Trailer Gameplay',
+            'Neon: Promoções Sazonais',
+            'Aetheria: Trailer Cinemático CGI',
+            'Aetheria: Agência de PR Externa',
+            'Aetheria: Ads Pagos (Meta/Reddit)',
+            'Aetheria: Influenciadores Genéricos'
+          ],
+          datasets: [{
+            label: 'Valor Investido (R$ K)',
+            data: [18.5, 12.0, 8.0, 6.5, 55.0, 42.0, 38.0, 25.0],
+            backgroundColor: [
+              '#2563eb', '#2563eb', '#2563eb', '#2563eb',
+              '#ef4444', '#ef4444', '#ef4444', '#ef4444'
+            ],
+            borderRadius: 4
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' }, max: 65 },
+            y: { ticks: { color: '#cbd5e1', font: { size: 11 } }, grid: { display: false } }
+          }
+        }
+      });
+
+      // 2. Salarios por Departamento Chart
+      const ctxSal = document.getElementById('chartSalarios').getContext('2d');
+      new Chart(ctxSal, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Engenharia de Software (3 devs)',
+            'Arte, Animação e Rig (3 devs)',
+            'Áudio, QA e Level Design (2 devs)',
+            'Direção e Game Design (1 dev)',
+            'Produção e Comunidade (1 dev)'
+          ],
+          datasets: [{
+            label: 'Folha Mensal (R$ K)',
+            data: [21.8, 19.2, 10.5, 9.5, 5.8],
+            backgroundColor: '#3b82f6',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' }, max: 26 },
+            y: { ticks: { color: '#cbd5e1', font: { size: 11 } }, grid: { display: false } }
+          }
+        }
+      });
+
+      // 3. Overhead 24 Meses Chart
+      const ctxOver = document.getElementById('chartOverhead').getContext('2d');
+      new Chart(ctxOver, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Coworking e Escritório Base',
+            'Software e Licenças',
+            'Assessoria Jurídico-Contábil',
+            'Cloud e Servidores',
+            'Hardware e DevKits'
+          ],
+          datasets: [{
+            label: 'Custo Acumulado 24 Meses (R$ K)',
+            data: [108.0, 85.9, 52.8, 38.4, 18.4],
+            backgroundColor: '#64748b',
+            borderRadius: 4
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' }, max: 125 },
+            y: { ticks: { color: '#cbd5e1', font: { size: 11 } }, grid: { display: false } }
+          }
+        }
+      });
+    }
+
     window.onload = function() {
-      // Grafico 1: P&L Bar Chart
+      // Grafico 1: P&L Bar Chart (Tab 1 Executiva)
       const ctx1 = document.getElementById('chartPL').getContext('2d');
       new Chart(ctx1, {
         type: 'bar',

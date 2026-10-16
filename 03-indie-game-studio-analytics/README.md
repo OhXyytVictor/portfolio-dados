@@ -106,11 +106,51 @@ Para o terceiro título em pré-produção (*Project Shift*), recomendamos três
 ---
 
 <details>
-<summary><h3>2. Visão Tática (Média Gestão / Lead Producer, Direção de Arte e Tech Lead): Resumo Tático (15 min)</h3>
-<i>Direcionada a coordenadores de produção, arte e tecnologia. Quadro de colaboradores, decomposição de contas operacionais e alocação por sprint.</i></summary>
+<summary><h3>2. Visão Tática (Média Gestão / Lead Producer, Direção de Arte e Tech Lead): Resumo Detalhado (15 min)</h3>
+<i>Direcionada a coordenadores de produção, arte e tecnologia. Gráfico de decomposição granular, detalhamento de contas por canal, folha salarial por especialidade e metas trimestrais.</i></summary>
 <br>
 
-#### 1. Composição da Equipe e Folha Salarial Mensal
+Esta seção destrincha minuciosamente a destinação de cada real investido pelo estúdio ao longo dos 24 meses de operação, separando o que foi gasto eficiente do que se configurou como desperdício operacional.
+
+![Decomposicao Granular dos Gastos](./docs/img/04_decomposicao_gastos_destrinchados.png)
+
+---
+
+#### 1. Destrinchamento de Despesas de Marketing: Eficiência de Nicho vs. Desperdício
+
+A comparação direta entre os dois lançamentos comprova que o volume de verba de marketing não garante sucesso comercial no mercado independente; o canal de alocação é o fator determinante:
+
+| Jogo | Canal de Divulgação | Fase da Campanha | Valor Investido | % da Verba do Jogo | Diagnóstico de Conversão |
+| :--- | :--- | :---: | :---: | :---: | :--- |
+| **Neon Protocol** | Criadores de Conteúdo e Streamers de Roguelike | Lançamento | R$ 18.500,00 | 41,1% | **Altíssima Conversão:** Streamers jogando a demo geraram picos de compra direta. |
+| **Neon Protocol** | Steam Next Fest (Demo Jogável e Transmissões) | Pré-Lançamento | R$ 12.000,00 | 26,7% | **Custo-Benefício Máximo:** Responsável por mais de 70% das adições à lista de desejos. |
+| **Neon Protocol** | Trailer de Gameplay e Redes Sociais | Lançamento | R$ 8.000,00 | 17,8% | **Eficiente:** Foco 100% em mecânicas reais de jogo, sem computação gráfica cara. |
+| **Neon Protocol** | Promoções Sazonais da Steam (Sales de Fim de Ano) | Pós-Lançamento | R$ 6.500,00 | 14,4% | **Sustentação de Cauda Longa:** Descontos de 20% mantiveram volume residual lucrativo. |
+| **Total Neon Protocol** | **Estratégia Enxuta Focada em Comunidade** | -- | **R$ 45.000,00** | **100,0%** | **Gerou 42.600 cópias vendidas.** |
+| **Aetheria Chronicles** | Trailer Cinemático CGI Terceirizado | Pré-Lançamento | R$ 55.000,00 | 34,4% | **Pura Queima de Caixa:** Vídeo bonito com milhões de views passivas e zero conversão em wishlist. |
+| **Aetheria Chronicles** | Agência de Relações Públicas (PR) Externa | Pré-Lançamento | R$ 42.000,00 | 26,3% | **Ineficiente:** Portais de notícias priorizaram lançamentos AAA; retorno insignificante. |
+| **Aetheria Chronicles** | Anúncios Pagos no Meta e Reddit | Lançamento | R$ 38.000,00 | 23,8% | **CAC Elevado:** Custo de Aquisição por clique insustentável para o tíquete do jogo. |
+| **Aetheria Chronicles** | Influenciadores de Variedade (Genéricos) | Lançamento | R$ 25.000,00 | 15,6% | **Baixa Afinidade:** Criadores sem audiência fiel no gênero de RPG de ação. |
+| **Total Aetheria** | **Campanha Inflada e Dispersa** | -- | **R$ 160.000,00** | **100,0%** | **Gerou apenas 20.000 cópias vendidas.** |
+
+> **Diagnóstico Tático de Marketing:** Em *Aetheria*, R$ 97.000,00 (60,7% do orçamento) foram drenados por agências genéricas e computação gráfica terceirizada. Para *Project Shift*, 100% da verba será realocada no modelo validado de *Neon Protocol*: demo jogável polida na Steam Next Fest e parceria com streamers especializados.
+
+---
+
+#### 2. Destrinchamento da Folha Salarial por Departamento Técnico
+
+A folha de pagamento fixa do estúdio totaliza **R$ 66.800,00 por mês** para uma equipe de **10 colaboradores**. A distribuição dos custos por disciplina técnica revela a carga imposta pela transição para o 3D:
+
+| Departamento | Colaboradores | Custo Mensal (R$) | % da Folha Total | Atribuição Principal no Pipeline |
+| :--- | :---: | :---: | :---: | :--- |
+| **Engenharia de Software / Código** | 3 | R$ 21.800,00 | **32,6%** | Arquitetura de sistemas, lógica de combate, ferramentas internas e integração com APIs de loja. |
+| **Arte, Animação e Rigging** | 3 | R$ 19.200,00 | **28,7%** | Modelagem 3D, concept art 2D, animação de personagens, shaders e efeitos visuais (VFX). |
+| **Áudio, QA e Level Design** | 2 | R$ 10.500,00 | **15,7%** | Trilha sonora original, sonorização de combate, design de fases e testes de regressão/bugs. |
+| **Direção e Game Design** | 1 | R$ 9.500,00 | **14,2%** | Balanceamento de atributos, regras de jogo, direção criativa e coordenação de cronograma. |
+| **Produção e Comunidade** | 1 | R$ 5.800,00 | **8,7%** | Gestão de sprints no Jira, comunicação com a comunidade na Steam/Discord e moderação. |
+| **Total Consolidado** | **10 Profissionais** | **R$ 66.800,00** | **100,0%** | **Burn rate salarial básico do estúdio.** |
+
+##### Quadro Nominal da Equipe
 
 | ID | Colaborador | Especialidade / Cargo | Nível | Salário Mensal (R$) | Data de Admissão |
 | :---: | :--- | :--- | :---: | :---: | :---: |
@@ -124,18 +164,25 @@ Para o terceiro título em pré-produção (*Project Shift*), recomendamos três
 | **08** | Juliana Mendes | Associate Producer & Community Manager | Pleno | R$ 5.800,00 | 2025-04-01 |
 | **09** | Thiago Castro | QA Lead & Level Designer | Pleno | R$ 5.000,00 | 2025-03-01 |
 | **10** | Andreia Fontes | Gameplay & Systems Programmer | Júnior | R$ 4.500,00 | 2025-08-01 |
-| -- | **Total Folha Fixa** | **10 Profissionais Especializados** | -- | **R$ 66.800,00/mês** | -- |
 
-#### 2. Decomposição Mensal de Contas do Estúdio (Overhead Fixo)
+---
 
-* **Infraestrutura e Coworking (R$ 4.500,00/mês):** Espaço físico compartilhado para reuniões de sprint, testes presenciais e infraestrutura de rede corporativa.
-* **Software e Licenciamento (R$ 3.900,00/mês):** Assinaturas corporativas de Unity Pro, assentos de IDE JetBrains, Adobe Creative Cloud, Jira e GitHub Enterprise.
-* **Cloud e Repositórios (R$ 1.600,00/mês):** Servidores de build automatizado, instâncias Perforce/Git LFS e rotinas de backup criptografado em nuvem.
-* **Assessoria Contábil e Jurídica (R$ 2.200,00/mês):** Gestão tributária de repasses cambiais do exterior (Steam US/Valve e Nintendo) e contratos de PI.
-* **Manutenção e Hardware (R$ 400 a R$ 1.500/mês):** Reposição de periféricos, kits de desenvolvimento e upgrades pontuais de GPU.
-* **Total Overhead Mensal:** **R$ 12.600,00 a R$ 13.700,00/mês**.
+#### 3. Destrinchamento das Contas Fixas e Infraestrutura (Overhead Operacional)
 
-#### 3. Metas Táticas Trimestrais (OKRs) para a Produção
+Além dos salários diretos, o estúdio consumiu **R$ 303.500,00 em 24 meses** em contas operacionais e infraestrutura (média de R$ 12.600 a R$ 13.700/mês):
+
+| Categoria de Custo | Custo Acumulado (24 Meses) | Média Mensal (R$) | % do Overhead | Oportunidade de Economia para o Jogo 3 |
+| :--- | :---: | :---: | :---: | :--- |
+| **Infraestrutura e Coworking** | R$ 108.000,00 | R$ 4.500,00 | **35,6%** | Manter espaço compartilhado enxuto; dias de trabalho remoto híbrido já reduzem contas de consumo. |
+| **Software e Licenciamento** | R$ 85.900,00 | R$ 3.579,17 | **28,3%** | **Corte Imediato:** Cancelamento de assentos ociosos de Unreal Engine/Maya, economizando R$ 13.200/ano. |
+| **Assessoria Jurídica e Contábil** | R$ 52.800,00 | R$ 2.200,00 | **17,4%** | Custo obrigatório para compliance tributário de repasses internacionais de câmbio da Valve/Nintendo. |
+| **Cloud, Servidores e Backups** | R$ 38.400,00 | R$ 1.600,00 | **12,7%** | Otimização de instâncias Perforce e rotinas de build em nuvem (economia estimada de 15%). |
+| **Hardware, DevKits e Manutenção** | R$ 18.400,00 | R$ 766,67 | **6,1%** | Equipamentos de consoles (PlayStation/Xbox devkits) já amortizados; compras futuras congeladas. |
+| **Total de Contas do Estúdio** | **R$ 303.500,00** | **R$ 12.645,83** | **100,0%** | **Meta de redução para R$ 10.200,00/mês.** |
+
+---
+
+#### 4. Metas Táticas Trimestrais (OKRs) para a Produção
 * **Produção (Q1):** Congelar o Game Design Document (GDD) de *Project Shift* sem adições de escopo pós-mês 3 de produção.
 * **Arte e Tech (Q2):** Reutilizar a base de shaders, iluminação 2.5D e arquitetura de código de *Neon Protocol*, encurtando o ciclo de prototipagem em 40%.
 * **Marketing e Comunidade (Q3):** Publicar a página na Steam 6 meses antes do lançamento, acumulando meta mínima de 25.000 wishlists antes do festival Next Fest.
@@ -301,7 +348,8 @@ FROM metricas_finais;
 │   ├── img/                                 # Graficos minimalistas de alta resolucao
 │   │   ├── 01_pl_comparativo_jogos.png
 │   │   ├── 02_evolucao_caixa_burn_rate.png
-│   │   └── 03_custo_dev_vs_retorno_copia.png
+│   │   ├── 03_custo_dev_vs_retorno_copia.png
+│   │   └── 04_decomposicao_gastos_destrinchados.png
 │   ├── dashboard_estudio.html               # Painel tatico interativo com abas e simulador
 │   ├── DATA_QUALITY_REPORT.md               # Auditoria de integridade e dados (100% de conformidade)
 │   └── ROTEIRO_PITCH_ESTUDIO.md             # Script executivo de pitch (5 minutos para conselho)
