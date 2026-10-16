@@ -1,149 +1,117 @@
-# 🎮 Data Analytics & Pipeline: E-Commerce de Games & Tech (Olist Case)
+# Análise e Pipeline de Dados: E-commerce de Games e Periféricos
 
 **Autor:** Victor Ramos  
-**Formação:** Jogos Digitais / Desenvolvimento de Games & Dados  
-**LinkedIn:** [victorramosbraga](https://www.linkedin.com/in/victorramosbraga) | **Email:** jsvramos@live.com  
-**Stack Técnica:** Python 3, PostgreSQL 18, SQLAlchemy, Pandas, DBeaver Community, Git  
-**Base Analisada:** ~100k pedidos reais (Olist Marketplace), com foco no Ecossistema Gamer, Consoles e Periféricos (~R$ 1.1 milhão transacionados).
+**Formação:** Jogos Digitais / Desenvolvimento de Games  
+**Contato:** [LinkedIn](https://www.linkedin.com/in/victorramosbraga) | jsvramos@live.com  
+**Stack Técnica:** Python 3, PostgreSQL 18, SQLAlchemy, Pandas, DBeaver, Git  
+**Base Analisada:** Transações reais de e-commerce brasileiro (Olist), com foco no segmento de consoles, jogos e periféricos (R$ 1.07 milhão faturados e 7.751 pedidos).
 
 ---
 
-## 🎯 Escolha como deseja visualizar este projeto:
+Este projeto analisa o comportamento de compra, gargalos logísticos e padrões de recompra no setor de games e tecnologia. 
 
-Clique em uma das opções abaixo para navegar no formato que melhor atende ao seu tempo e objetivo:
-
-| 🎮 [Opção 1: Apresentação Executiva](#-opção-1-apresentação-executiva-5-a-10-min---para-tomadores-de-decisão) | 📊 [Opção 2: Resumo Operacional](#-opção-2-resumo-operacional-15-min---para-analistas-e-coordenadores) | 🔬 [Opção 3: Relatório Técnico Completo](#-opção-3-relatório-técnico-completo-deep-dive---para-tech-leads-e-engenheiros) |
-| :---: | :---: | :---: |
-| ⏱️ **Leitura: 5 a 10 min** | ⏱️ **Leitura: 15 min** | ⏱️ **Leitura: 30+ min** |
-| 🎯 **Público:** Gestores, C-Levels e Recrutadores | 📋 **Público:** Analistas de Negócios e Produto | 💻 **Público:** Líderes Técnicos e Engenheiros |
-| Insights visuais, principais números e **Planos de Ação Imediatos**. | Tabelas comparativas de games, logística por região e planos táticos. | Modelagem relacional (DER), scripts SQL avançados e arquitetura ETL. |
+Para facilitar a leitura conforme o seu perfil ou tempo disponível, o conteúdo está organizado em três visões independentes. Clique no título para expandir:
 
 ---
 
-<details open>
-<summary><h2>🎮 Opção 1: Apresentação Executiva (5 a 10 min) — Para Tomadores de Decisão</h2></summary>
+<details>
+<summary><h3>1. Apresentação Executiva (Leitura: 5 a 10 min)</h3>
+<i>Foco em tomada de decisão, diagnóstico central e planos de ação para liderança.</i></summary>
+<br>
 
-### 📌 O Cenário: O Comportamento do Consumidor Gamer
-O público gamer possui um dos **maiores tickets médios do varejo digital**, porém é um dos nichos mais exigentes em termos de **ansiedade de entrega e confiabilidade do produto**. Analisamos o cluster de **Consoles, Games e Periféricos** da Olist para diagnosticar as alavancas de crescimento e gargalos operacionais.
+#### Contexto do Negócio
+O público consumidor de jogos e hardware possui um dos tickets médios mais altos do varejo online (R$ 138,49 para consoles e jogos; R$ 116,51 para periféricos). Por outro lado, apresenta alta sensibilidade a atrasos de entrega, tornando a eficiência logística o principal fator de retenção de clientes.
 
-```
-┌────────────────────────────────────────────────────────────────────────────────┐
-│                           SCORECARD DO SEGMENTO GAMER                          │
-├──────────────────────┬──────────────────────┬──────────────────────────────────┤
-│   Faturamento Total  │  Pedidos Entregues   │     Ticket Médio do Gamer        │
-│    R$ 1.069.419,54   │    7.751 pedidos     │ R$ 138,49 (Consoles) / R$ 116,51 │
-├──────────────────────┼──────────────────────┼──────────────────────────────────┤
-│  Satisfação no Prazo │ Satisfação Atrasado  │    Impacto Negativo do Atraso    │
-│     4.26 / 5.00 ★    │    2.65 / 5.00 ★     │       -1.61 Estrelas (-38%)      │
-└──────────────────────┴──────────────────────┴──────────────────────────────────┘
-```
+#### Indicadores Gerais do Segmento
+* **Faturamento Total Analisado:** R$ 1.069.419,54
+* **Volume de Pedidos Concluídos:** 7.751 pedidos
+* **Ticket Médio:** R$ 138,49 (Consoles e Jogos) | R$ 116,51 (Periféricos e Acessórios)
+* **Avaliação Média Geral:** 3,98 de 5,00
+
+#### O Diagnóstico: Sensibilidade Logística
+Ao cruzar o cumprimento do prazo estimado de entrega com as notas de avaliação dos clientes, os dados revelam:
+
+* **Entregas no Prazo (12 dias médios de transporte):** Nota média de satisfação de **4,26 de 5,00**, com 62% de avaliações máximas (nota 5).
+* **Entregas com Atraso (33 dias médios de transporte):** Nota média cai para **2,65 de 5,00**, com mais de 45% de avaliações mínimas (nota 1).
+* **Conclusão:** O atraso reduz a avaliação média em 1,61 pontos (-38%), gerando detratores da marca e eliminando a probabilidade de recompra orgânica.
+
+#### Planos de Ação Recomendados
+
+1. **Roteamento Expresso Regional (Foco Sudeste)**
+   * **Ação:** Centralizar estoque de consoles e componentes de alto giro em centros de distribuição próximos aos estados de SP, RJ e MG, reduzindo o tempo médio de trânsito de 12 para até 4 dias úteis.
+   * **Meta:** Reduzir em 75% o volume de pedidos atrasados e aproximar a nota média de 4,50.
+
+2. **Comunicação Proativa de Rastreamento**
+   * **Ação:** Implementar disparos automáticos com o status real do pedido. Caso o sistema identifique risco de atraso antes da data limite, notificar o comprador preventivamente com um cupom de desconto para a próxima compra.
+   * **Meta:** Mitigar a queda de nota em pedidos com ocorrências operacionais.
+
+3. **Combos no Ponto de Venda (Kits de Entrada)**
+   * **Ação:** Identificamos baixa taxa de recompra de jogos físicos nos primeiros 60 dias após a aquisição do console. Criar pacotes unificando console + acessórios (ex: controle extra ou headset) com desconto progressivo.
+   * **Meta:** Elevar o ticket médio consolidado em 15%.
+
+<br>
+</details>
 
 ---
 
-### 🚨 Diagnóstico Crítico: O "Efeito Ansiedade Gamer"
-* **Quando o console chega dentro do prazo estimado:** A nota média de satisfação do gamer é **4.26 estrelas**, com mais de **62% de notas máximas (5 estrelas)**.
-* **Quando ocorre atraso na entrega:** A nota despenca para **2.65 estrelas**, e o índice de avaliações de 1 estrela (detratores da marca) dispara para mais de **45%**.
-* **Tempo médio de entrega com atraso:** Salta de **12 dias** para **33.1 dias**.
+<details>
+<summary><h3>2. Resumo Operacional (Leitura: 15 min)</h3>
+<i>Tabelas comparativas, métricas por região e recomendações táticas.</i></summary>
+<br>
+
+#### 1. Desempenho por Linha de Produto
+
+| Categoria | Pedidos Entregues | Receita Bruta (R$) | Ticket Médio (R$) | Avaliação Média |
+| :--- | :---: | :---: | :---: | :---: |
+| Periféricos de Informática (Teclados, mouses, headsets) | 6.689 | R$ 911.954,32 | R$ 116,51 | 3,93 / 5,0 |
+| Consoles e Jogos (Hardware e Mídia) | 1.062 | R$ 157.465,22 | R$ 138,49 | 4,02 / 5,0 |
+| Eletrônicos Gerais | 2.550 | R$ 160.246,74 | R$ 57,91 | 4,04 / 5,0 |
+
+#### 2. Panorama Logístico por Região de Destino
+
+| Região | Dias Médios para Entrega | Frete Médio (R$) | Taxa de Pedidos com Atraso | Nota Média |
+| :--- | :---: | :---: | :---: | :---: |
+| Sudeste (SP, RJ, MG, ES) | 8,4 dias | R$ 16,80 | 5,2% | 4,31 / 5,0 |
+| Sul (PR, SC, RS) | 11,8 dias | R$ 21,40 | 7,9% | 4,18 / 5,0 |
+| Nordeste (BA, PE, CE, etc.) | 18,2 dias | R$ 34,90 | 16,8% | 3,82 / 5,0 |
+| Norte (AM, PA, RO, etc.) | 24,5 dias | R$ 42,10 | 22,4% | 3,55 / 5,0 |
+
+#### 3. Métodos de Pagamento e Financiamento
+* **Cartão de Crédito:** Representa 78,4% do volume financeiro total. Na compra de consoles, o parcelamento médio varia entre 6 e 10 vezes.
+* **PIX e Boleto Bancário:** Representam 18,2% da receita, com maior adesão para compras de jogos físicos e acessórios de menor valor.
+* **Vouchers:** 3,4% do volume transacionado.
+
+#### Cronograma Tático Sugerido
+* **Mês 1 a 2:** Revisão de contratos com transportadoras para as rotas com atraso superior a 15% (regiões Norte e Nordeste).
+* **Mês 3 a 4:** Teste A/B de combos de consoles com periféricos na página de produto.
+* **Mês 5 a 6:** Implementação do painel operacional em tempo real para monitorar pedidos em rota de risco.
+
+<br>
+</details>
+
+---
+
+<details>
+<summary><h3>3. Relatório Técnico Completo (Deep Dive)</h3>
+<i>Arquitetura do pipeline, modelagem relacional, scripts SQL avançados e documentação técnica.</i></summary>
+<br>
+
+#### 1. Arquitetura do Pipeline
 
 ```mermaid
-%%{init: {'theme': 'dark'}}%%
 flowchart LR
-    A["Pedido Gamer Realizado"] --> B{"Entrega no Prazo?"}
-    B -- "SIM (12 dias médios)" --> C["★ 4.26 Estrelas<br>Cliente Fidelizado"]
-    B -- "NÃO (33 dias médios)" --> D["★ 2.65 Estrelas<br>Cancelamentos & Detratores"]
+    A["Fontes Brutas (CSVs Olist)"] --> B["Script de Ingestao Python (Pandas/SQLAlchemy)"]
+    B --> C["PostgreSQL 18 (Schema olist)"]
+    C --> D["Constraints e Indices B-Tree"]
+    D --> E["Camada de Views Analiticas"]
+    E --> F["Consultas de Negocio (RFM e MoM)"]
 ```
 
----
+* **Ingestão:** Scripts Python em `pipeline_etl/` realizam a leitura de 9 tabelas com detecção de tipos, tratamento de datas e inserção no PostgreSQL via `psycopg2` utilizando lotes (`chunksize`), concluindo o processamento de 1,5 milhão de registros em menos de 3 minutos.
+* **Normalização:** Schema dedicado com chaves primárias, estrangeiras e integridade referencial em cascata.
+* **Otimização:** Criação de índices B-Tree nas colunas de data (`order_purchase_timestamp`), status do pedido e chaves de relacionamento.
 
-### 🚀 3 Planos de Ação Imediatos (Próximos Passos)
-
-1. **Plano de Ação 1: Fast-Track Logístico Gamer (Hubs Regionais)**
-   * *O que fazer:* Criar centros de expedição prioritários para produtos de alto valor (consoles e placas de vídeo) concentrados nos estados de SP, RJ e MG, reduzindo o tempo de 12 para até 4 dias úteis.
-   * *Impacto Estimado:* Redução de 80% nos atrasos e elevação do NPS geral para 4.5 estrelas.
-
-2. **Plano de Ação 2: Gamer Shield (Comunicação Proativa de Tracking)**
-   * *O que fazer:* Disparo automatizado de notificações via WhatsApp/Email informando cada etapa do transporte. Se o algoritmo detectar probabilidade de atraso, o cliente recebe um cupom de R$ 30,00 de desconto no próximo jogo antes mesmo de reclamar.
-   * *Impacto Estimado:* Redução de 40% na taxa de churn (clientes que abandonam a loja).
-
-3. **Plano de Ação 3: Cross-Selling Inteligente no Checkout (Bundle de Lançamento)**
-   * *O que fazer:* Quem compra consoles tem taxa de recompra de jogos físicos inferior a 8% nos primeiros 60 dias. Criar kits com 2 jogos inclusos ou assinatura de serviços no momento da compra.
-   * *Impacto Estimado:* Aumento de 22% no LTV (*Lifetime Value*) do cliente gamer.
-
-</details>
-
----
-
-<details>
-<summary><h2>📊 Opção 2: Resumo Operacional (15 min) — Para Analistas e Coordenadores</h2></summary>
-
-### 📈 1. Desempenho por Categoria Gamer / Tech
-
-| Categoria | Volume de Pedidos | Faturamento Total (R$) | Ticket Médio | Nota de Avaliação |
-| :--- | :---: | :---: | :---: | :---: |
-| **Informática & Acessórios (Periféricos Gamer)** | 6.689 | R$ 911.954,32 | R$ 116,51 | 3.93 ★ |
-| **Consoles & Games (Hardware e Mídia)** | 1.062 | R$ 157.465,22 | R$ 138,49 | 4.02 ★ |
-| **Eletrônicos em Geral** | 2.550 | R$ 160.246,74 | R$ 57,91 | 4.04 ★ |
-
-> **Insight:** Embora a categoria de `consoles_games` tenha menor volume que periféricos de informática, ela possui o **maior valor unitário médio** do ecossistema e maior índice de recompra por impulso.
-
----
-
-### 🗺️ 2. Eficiência Logística por Região (SLA de Entrega)
-
-| Região | Dias Médios para Entrega | Frete Médio (R$) | Pedidos com Atraso (%) | Satisfação Média |
-| :--- | :---: | :---: | :---: | :---: |
-| **Sudeste (SP, RJ, MG)** | 8.4 dias | R$ 16,80 | 5.2% | 4.31 ★ |
-| **Sul (PR, SC, RS)** | 11.8 dias | R$ 21,40 | 7.9% | 4.18 ★ |
-| **Nordeste (BA, PE, CE)** | 18.2 dias | R$ 34,90 | 16.8% | 3.82 ★ |
-| **Norte (AM, PA, RO)** | 24.5 dias | R$ 42,10 | 22.4% | 3.55 ★ |
-
----
-
-### 💳 3. Meios de Pagamento Preferidos no Universo Gamer
-* **Cartão de Crédito:** 78.4% do volume financeiro (Média de parcelamento: 6 a 10 parcelas sem juros para consoles).
-* **PIX / Boleto Bancário:** 18.2% do volume financeiro (Preferido para mídias físicas de jogos e acessórios de menor valor).
-* **Voucher / Vale-Presente:** 3.4% do volume (Potencial não explorado de gift cards de PlayStation Network, Xbox Game Pass e Steam).
-
----
-
-### 📋 Plano de Ação Tático Trimestral (Q1 - Q4)
-
-* **Q1 (Operação):** Renegociação de tabela de fretes com transportadoras expressas para Norte e Nordeste.
-* **Q2 (Marketing):** Parcerias de afiliados com streamers e criadores de conteúdo gamer focando na linha de periféricos de alta margem (teclados mecânicos e headsets).
-* **Q3 (Produto):** Lançamento de programa de fidelidade com pontuação dobrada para compras de consoles e lançamentos AAA.
-* **Q4 (Black Friday):** Estratégia de estoque antecipado para garantir entrega em até 48h durante o pico de novembro.
-
-</details>
-
----
-
-<details>
-<summary><h2>🔬 Opção 3: Relatório Técnico Completo (Deep Dive) — Para Tech Leads e Engenheiros</h2></summary>
-
-### 🏗️ 1. Arquitetura do Pipeline de Dados (End-to-End)
-
-```mermaid
-flowchart TD
-    subgraph Ingestao ["1. Camada de Ingestao (Python)"]
-        A["CSVs Brutos da Olist (Kaggle)"] --> B["01_download_data.py"]
-        B --> C["02_ingest_postgres.py<br>(Pandas + SQLAlchemy Chunksize)"]
-    end
-
-    subgraph Armazenamento ["2. Banco de Dados (PostgreSQL 18)"]
-        C --> D[("Schema olist<br>(9 Tabelas Relacionais)")]
-        D --> E["01_schema_constraints.sql<br>(PKs, FKs e Indices B-Tree)"]
-    end
-
-    subgraph Analitica ["3. Camada Semantica & Consultas"]
-        E --> F["olist.vw_pedidos_detalhados<br>(View Consolidada)"]
-        E --> G["olist.vw_sla_logistico_uf<br>(View Logistica)"]
-        F --> H["03_business_analytics_kpis.sql<br>(CTEs, LAG, NTILE RFM)"]
-    end
-```
-
----
-
-### 📐 2. Modelo de Dados Físico (Diagrama Entidade-Relacionamento)
+#### 2. Modelo Entidade-Relacionamento (DER)
 
 ```mermaid
 erDiagram
@@ -206,12 +174,10 @@ erDiagram
     }
 ```
 
----
+#### 3. Consultas Analíticas Principais
 
-### 💻 3. Consultas SQL Estratégicas Utilizadas
-
-#### A. Segmentação RFM de Clientes Gamers (Recência, Frequência e Valor)
-Utilizamos **Window Function `NTILE(4)`** para dividir a base de clientes em quartis comportamentais e atribuir notas de 1 a 4 para cada dimensão:
+##### A. Segmentação RFM de Clientes Gamers (Recência, Frequência e Valor Monetário)
+Utiliza a Window Function `NTILE(4)` para distribuir clientes em quartis estatísticos:
 
 ```sql
 WITH metricas_cliente AS (
@@ -244,14 +210,14 @@ SELECT
     CASE 
         WHEN (r_score + f_score + m_score) >= 10 THEN 'Cliente VIP Gamer'
         WHEN (r_score + f_score + m_score) BETWEEN 7 AND 9 THEN 'Cliente Potencial'
-        WHEN r_score <= 2 THEN 'Cliente em Risco / Churn'
+        WHEN r_score <= 2 THEN 'Cliente em Risco'
         ELSE 'Cliente Ocasional'
     END AS segmento_cliente
 FROM quartis_rfm
 ORDER BY pontuacao_total_rfm DESC, valor_monetario DESC;
 ```
 
-#### B. Análise de Crescimento Mês a Mês (MoM Growth) com `LAG()`
+##### B. Crescimento de Receita Mês a Mês (MoM Growth %) com `LAG()`
 ```sql
 WITH faturamento_mensal AS (
     SELECT 
@@ -276,31 +242,41 @@ FROM faturamento_mensal
 ORDER BY ano_mes DESC;
 ```
 
----
+#### 4. Estrutura de Arquivos do Projeto
 
-### ⚙️ 4. Otimização e Performance de Banco
-* **Indexação B-Tree Estratégica:** Criação de índices em todas as colunas de junção (`customer_id`, `product_id`, `seller_id`) e campos de particionamento temporal (`order_purchase_timestamp`).
-* **Ingestão em Lotes (*Chunks*):** Script Python com `chunksize=20000` e driver de alto desempenho `psycopg2-binary`, permitindo carregar **1.5 milhão de registros em menos de 180 segundos**.
-* **Camada Semântica com Views:** Criação de visões materializadas virtuais para evitar reprocessamento de JOINs pesados entre 7 tabelas nas ferramentas analíticas.
+```text
+01-olist-ecommerce-analytics/
+├── data/
+│   └── raw/                       # Arquivos CSV brutos (ignorado no git)
+├── pipeline_etl/
+│   ├── 01_download_data.py        # Download automatizado
+│   └── 02_ingest_postgres.py      # Tratamento e carga no PostgreSQL
+├── sql/
+│   ├── 01_schema_constraints.sql  # Chaves e indices B-Tree
+│   ├── 02_analytical_views.sql    # Views consolidadas
+│   └── 03_business_analytics_kpis.sql # Consultas analiticas
+└── README.md
+```
 
-</details>
+#### 5. Como Reproduzir Localmente
 
----
-
-## 🚀 Como Reproduzir Este Projeto na Sua Máquina
-
-1. Clone o repositório:
+1. Clonar o repositório:
    ```bash
    git clone https://github.com/OhXyytVictor/portfolio-dados.git
    cd portfolio-dados/01-olist-ecommerce-analytics
    ```
-2. Instale as dependências:
+2. Instalar dependências Python:
    ```bash
    pip install pandas sqlalchemy psycopg2-binary requests
    ```
-3. Execute o download e a ingestão automatizada:
+3. Executar o download e a ingestão:
    ```bash
    python pipeline_etl/01_download_data.py
    python pipeline_etl/02_ingest_postgres.py
    ```
-4. Conecte seu **DBeaver** ou ferramenta SQL favorita e execute os scripts da pasta `sql/`.
+4. Conectar via DBeaver e executar os scripts da pasta `sql/`.
+
+<br>
+</details>
+
+---
