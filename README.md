@@ -35,8 +35,8 @@ Cada projeto é documentado em três níveis de profundidade, refletindo as trê
 | Projeto | Descrição | Principais Tópicos | Status | Link |
 | :--- | :--- | :--- | :--- | :--- |
 | **01. Pipeline e Análise de E-commerce Gamer** | Estudo de caso de transações reais com foco em consoles, games e periféricos. Pipeline ETL completo em Python e modelagem no PostgreSQL. | Python ETL, PostgreSQL, RFM NTILE, Window Functions, SLA Logístico | Concluído | [Acessar Projeto](./01-olist-ecommerce-analytics/) |
-| **02. Modelagem Relacional e Consultas SQL** | Modelagem relacional e queries analíticas simulando varejo tradicional. | DER, DDL, DML, CTEs, Views | Concluído | [Acessar Projeto](./01-ecommerce-relational-analytics/) |
-| **03. Dados Públicos do Brasil (dados.gov.br)** | Análise de dados abertos governamentais (em estruturação). | Dados Abertos, Limpeza, Análise Exploratória | Em planejamento | - |
+| **02. Pipeline Macroeconômico e Varejo de Tecnologia** | Ingestão automatizada de dados abertos do Banco Central (API REST) e IBGE (2000 a 2026), analisando ciclos cambiais, Selic e inflação. | REST API, PostgreSQL, Time Series, Window Functions, NTILE | Concluído | [Acessar Projeto](./02-dados-publicos-brasil/) |
+| **03. Modelagem Relacional e Consultas SQL** | Modelagem relacional e queries analíticas simulando varejo tradicional. | DER, DDL, DML, CTEs, Views | Concluído | [Acessar Projeto](./01-ecommerce-relational-analytics/) |
 
 ---
 
