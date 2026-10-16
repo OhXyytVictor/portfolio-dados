@@ -20,3 +20,7 @@ desktop.ini
 .env
 secrets.json
 *.pem
+
+# Datasets brutos locais (grandes arquivos CSV)
+data/raw/*.csv
+*.csv

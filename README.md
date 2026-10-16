@@ -30,11 +30,11 @@ Aqui reúno projetos práticos desenvolvidos durante meus estudos e transição 
 
 ## 📂 Projetos do Portfólio
 
-| Projeto | Descrição | Principais Tópicos | Link |
-| :--- | :--- | :--- | :--- |
-| **01. Modelagem & Analytics de E-commerce** | Modelagem relacional completa de um e-commerce e queries analíticas para métricas de negócio. | DER, DDL, DML, CTEs, Window Functions, Views | [Acessar Projeto](./01-ecommerce-relational-analytics/) |
-| **02. Pipeline ETL com Python e Postgres** | *(Em desenvolvimento)* Ingestão e carga automatizada de dados externos para o PostgreSQL. | Python, Pandas, SQLAlchemy, ETL | *Em breve* |
-| **03. Data Warehouse & Star Schema** | *(Em desenvolvimento)* Modelagem dimensional para suporte a Business Intelligence. | Fato, Dimensões, Star Schema | *Em breve* |
+| Projeto | Descrição | Principais Tópicos | Status | Link |
+| :--- | :--- | :--- | :--- | :--- |
+| **01. Pipeline & Analytics Olist E-Commerce** | Pipeline ETL completo com Python e PostgreSQL de 100k pedidos reais da Olist (Kaggle). | Python (ETL), PostgreSQL, Constraints, RFM, Window Functions, SLAs de Frete | **Concluído** | [Acessar Projeto](./01-olist-ecommerce-analytics/) |
+| **02. Modelagem Relacional & SQL Puro** | Modelagem relacional e queries analíticas simulando varejo tradicional. | DER, DDL, DML, CTEs, Views | **Concluído** | [Acessar Projeto](./01-ecommerce-relational-analytics/) |
+| **03. Dados Públicos Brasil (dados.gov.br)** | *(Próximo projeto)* Análise de abertura de empresas ou saúde suplementar. | Dados Abertos, Limpeza, Análise Exploratória | *Em planejamento* | - |
 
 ---
 
