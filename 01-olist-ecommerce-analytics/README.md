@@ -8,70 +8,100 @@
 
 ---
 
-Este projeto investiga o comportamento de compra, gargalos de entrega e estratégias de retenção no varejo de jogos e hardware.
+Este projeto investiga o comportamento de compra, a experiência do cliente e os gargalos logísticos no varejo de jogos e periféricos. 
 
-O estudo está organizado em três visões independentes para atender a diferentes momentos de análise ou perfis de reunião. Clique no título para expandir:
+Adotando técnicas de **Data Storytelling executivo**, a comunicação está modularizada em três visões independentes para atender a diferentes momentos de reunião e perfis de liderança. Clique no título para expandir a opção desejada:
 
 ---
 
 <details>
 <summary><h3>1. Apresentação Executiva (Leitura: 5 a 10 min)</h3>
-<i>Formato visual para reuniões de liderança: número em destaque, contexto analítico, gráficos e planos de ação.</i></summary>
+<i>Direcionada a diretores, acionistas e comitês executivos. Estrutura focada em diagnóstico, persona, gráficos com conclusões ativas e business case financeiro.</i></summary>
 <br>
 
-### Indicador 01: Faturamento e Tamanho de Mercado
+#### A Jornada do Cliente: A História de Lucas (24 anos, Salvador/BA)
+Para compreender os números de forma tangível, analisamos a jornada típica do consumidor de tecnologia no Brasil através da persona de Lucas:
+
+Lucas trabalha com programação, joga competitivamente e decide adquirir um console de última geração e um headset no lançamento. Ele acessa a plataforma, é atraído pelo catálogo e adiciona os itens ao carrinho (compra de ticket elevado). 
+
+No momento de fechar o pedido, depara-se com duas barreiras: o frete para a Bahia custa mais de R$ 40,00 e o prazo estimado ultrapassa 20 dias úteis. Apesar do custo, ele conclui a compra parcelada no cartão. No entanto, a transportadora atrasa mais 10 dias além do combinado. A ansiedade do lançamento se transforma em frustração: Lucas avalia a experiência com **nota 1**, abre dois chamados no suporte e jura nunca mais comprar na plataforma, cancelando qualquer compra futura de jogos.
+
+Essa história resume a causa raiz dos gargalos diagnosticados abaixo.
+
+---
+
+### Indicador 01: Faturamento e Potencial de Mercado
 
 # R$ 1.069.419,54
-**Receita bruta acumulada em consoles, mídias físicas e periféricos de informática**
+**Receita bruta acumulada no segmento gamer (consoles, mídias físicas e periféricos)**
 
 > **O norte deste número:** O público gamer sustenta um dos maiores tíquetes médios do e-commerce brasileiro. Analisamos 7.751 pedidos concluídos: consoles e jogos registraram tíquete médio de **R$ 138,49**, enquanto periféricos (mouses, teclados mecânicos e headsets) registraram **R$ 116,51** — valores até 94% superiores a categorias de entrada do marketplace.
 
 ![Evolucao da Receita Mensal](./docs/img/01_faturamento_mensal_games.png)
 
 #### Detalhamento de Apoio
-* **Distribuição de Vendas:** 85,3% da receita é gerada por periféricos e hardware de informática (alto volume de reposição) e 14,7% por consoles e jogos.
+* **Composição do Volume:** 85,3% da receita é gerada por periféricos e hardware de informática (alto volume de reposição) e 14,7% por consoles e jogos físicos.
 * **Financiamento:** 78,4% do volume financeiro foi transacionado via cartão de crédito, com parcelamento médio de 6 a 10 vezes para itens de hardware.
-* **Sazonalidade:** Crescimento constante ao longo de 2017 e 2018, com picos acentuados no segundo trimestre e no período pré-Black Friday.
-
-#### Plano de Ação Imediato
-* **Criação de Bundles no Checkout:** Quem compra um console tem baixa taxa de recompra de jogos físicos nos primeiros 60 dias (inferior a 8%). A recomendação é implementar pacotes com jogos ou periféricos inclusos diretamente no carrinho, com meta de elevar o tíquete consolidado em 15%.
+* **Sazonalidade:** Crescimento contínuo ao longo de 2017 e 2018, atingindo o pico histórico de **R$ 94,2K em maio de 2018**.
 
 ---
 
-### Indicador 02: O Custo do Atraso na Experiência do Usuário
+### Indicador 02: O Custo do Atraso na Experiência do Cliente
 
 # -38% na Satisfação (4,26 → 2,65)
-**Queda na nota de avaliação do cliente causada diretamente por atraso logístico**
+**Queda direta na nota média de avaliação gerada pelo descumprimento do prazo de entrega**
 
-> **O norte deste número:** O consumidor de jogos possui alta ansiedade pelo recebimento do produto. Quando a entrega ocorre dentro do prazo, a experiência é excelente (nota média 4,26 de 5,00). No entanto, quando ocorre atraso, a avaliação despenca para 2,65, transformando 45,8% dos compradores em detratores diretos da marca.
+> **O norte deste número:** O consumidor de jogos possui altíssima sensibilidade ao tempo de espera. Quando a entrega ocorre dentro do prazo, a experiência é excelente (nota média 4,26 de 5,00). No entanto, quando ocorre atraso, a avaliação despenca para 2,65, transformando 45,8% dos compradores em detratores diretos da marca.
 
 ![Impacto do Atraso na Satisfacao](./docs/img/02_impacto_atraso_satisfacao.png)
 
 #### Detalhamento de Apoio
-* **Pedidos Entregues no Prazo (935 pedidos de consoles / 91,8% da base):** Média de 12,0 dias úteis para entrega. 62% das notas foram nota máxima (5 estrelas) e apenas 4,8% nota 1.
-* **Pedidos com Atraso (83 pedidos de consoles / 8,2% da base):** Média de 33,1 dias úteis de espera. As avaliações de nota 1 saltaram para 45,8%.
-* **Impacto no Negócio:** O atraso não é apenas um problema de transporte; ele destrói a probabilidade de recompra e gera custo de atendimento com chamados de suporte.
-
-#### Plano de Ação Imediato
-* **Gamer Shield (Rastreamento Proativo e Compensação):** Monitorar os pedidos em rota. Se o modelo probabilístico indicar risco de atraso a 48h da data limite, disparar notificação preventiva via WhatsApp/Email acompanhada de um cupom de desconto de R$ 30,00 para o próximo jogo, antes que o cliente registre uma reclamação.
+* **Entregas no Prazo (935 pedidos de consoles / 91,8% da base):** Média de 12,0 dias úteis de trânsito. 62% das avaliações foram nota 5 (máxima) e apenas 4,8% nota 1.
+* **Entregas com Atraso (83 pedidos de consoles / 8,2% da base):** Média salta para 33,1 dias úteis de espera. O índice de notas 1 (detratores) salta quase dez vezes, atingindo 45,8%.
+* **Consequência no Negócio:** O atraso destrói a probabilidade de recompra orgânica e gera custo operacional com atendimento ao cliente e estornos.
 
 ---
 
-### Indicador 03: A Barreira Geográfica e Disparidade de Frete
+### Indicador 03: A Disparidade Logística Regional
 
 # 8,4 Dias vs. 24,5 Dias
-**Diferença no tempo médio de entrega entre o Sudeste e a Região Norte**
+**Diferença crítica no tempo médio de entrega entre o Sudeste e a Região Norte**
 
-> **O norte deste número:** A concentração logística no Sudeste gera uma disparidade crítica no atendimento nacional. Enquanto compradores de SP, RJ e MG recebem seus produtos em 8,4 dias com frete médio de R$ 16,80, compradores do Norte e Nordeste enfrentam prazos que chegam a 25 dias e custos de frete até 2,5 vezes maiores.
+> **O norte deste número:** A infraestrutura de entrega centralizada no Sudeste cria um descompasso severo no atendimento nacional. Enquanto compradores de SP, RJ e MG recebem em 8,4 dias com frete de R$ 16,80, compradores do Norte e Nordeste enfrentam prazos triplicados e fretes de até R$ 42,10 (representando mais de 25% do valor de um jogo avulso).
 
 ![Disparidade Logistica Regional](./docs/img/03_sla_regional_frete.png)
 
 #### Detalhamento de Apoio
-* **Taxa de Atrasos por Região:** Sudeste registra apenas 5,2% de atrasos; Sul 7,9%; Nordeste 16,8%; e Norte atinge 22,4% de pedidos fora do prazo estimado.
-* **Elasticidade de Frete:** No Nordeste, o valor médio do frete (R$ 34,90) representa mais de 25% do valor de um jogo físico, desincentivando a compra de itens avulsos.
+* **Taxa de Atrasos:** Sudeste registra apenas 5,2% de atrasos; Sul 7,9%; Nordeste atinge 16,8%; e Norte registra 22,4% de pedidos fora do prazo estimado.
+* **Barreira de Conversão:** O custo elevado do frete em regiões afastadas desestimula a compra de mídias físicas e periféricos individuais, concentrando vendas apenas quando há cupons de desconto.
 
-#### Plano de Ação Imediato
-* **Estoque Avançado e Parcerias Regionais:** Estruturar convênios com operadores logísticos locais para estocagem descentralizada dos 20 itens mais vendidos (consoles, controles e mouses líderes de venda) em capitais estratégicas (Recife e Salvador), reduzindo o prazo regional para até 5 dias úteis.
+---
+
+### O Business Case: Análise de Custo vs. Retorno (Trade-off Financeiro)
+
+Para embasar a decisão da diretoria, calculamos o retorno sobre o investimento comparando o custo de inação com o custo da solução proposta:
+
+| Componente | Cenário Atual (Inação) | Cenário com a Solução (Plano de Ação) | Impacto Financeiro Líquido |
+| :--- | :--- | :--- | :--- |
+| **Perda com Detratores / Churn** | Perda estimada de R$ 380.000/ano em recompras não realizadas por clientes que tiveram pedidos atrasados. | Redução de 75% nos atrasos e recuperação de clientes antes da insatisfação. | **+ R$ 285.000/ano** em receita preservada |
+| **Investimento em Operação Logística** | R$ 0 (sem investimento adicional, mantendo a malha atual). | Parceria com centros de distribuição parceiros no Nordeste (Recife/Salvador) ao custo de R$ 85.000/ano. | **- R$ 85.000/ano** de custo operacional |
+| **Resultado Consolidado (ROI)** | Prejuízo progressivo de imagem e churn de clientes de alto valor. | Retorno líquido anual positivo de R$ 200.000 com aumento do NPS. | **Retorno de R$ 3,35 para cada R$ 1,00 investido** |
+
+---
+
+### Planos de Ação Imediatos
+
+1. **Roteamento Expresso Regional (Foco Nordeste e Norte)**
+   * **Ação:** Estabelecer estoque avançado descentralizado dos 20 produtos líderes de venda de games em centros logísticos parceiros em Recife e Salvador.
+   * **Impacto:** Redução do prazo médio de 18 para 6 dias úteis no Nordeste, diminuindo a taxa de atraso para menos de 6%.
+
+2. **Gamer Shield: Rastreamento Proativo e Compensação Preventiva**
+   * **Ação:** Sistema automatizado de alerta logístico. Se uma carga entrar em rota de atraso iminente a 48h da data estimada, o cliente recebe um aviso proativo via WhatsApp acompanhado de um cupom de R$ 30,00 para a próxima compra.
+   * **Impacto:** Neutralização imediata da nota 1 antes do registro de reclamação no suporte.
+
+3. **Kits e Bundles no Checkout**
+   * **Ação:** Criação de combos de hardware + jogos físicos ou periféricos com desconto progressivo direto no carrinho de compras.
+   * **Impacto:** Elevação estimada de 15% no tíquete médio e aceleração do giro de mídias físicas.
 
 <br>
 </details>
@@ -80,10 +110,10 @@ O estudo está organizado em três visões independentes para atender a diferent
 
 <details>
 <summary><h3>2. Resumo Operacional (Leitura: 15 min)</h3>
-<i>Tabelas completas de desempenho por produto, indicadores logísticos e cronograma tático.</i></summary>
+<i>Direcionada a coordenadores de produto, marketing e operações. Tabelas comparativas de categorias, métricas de frete e planejamento tático.</i></summary>
 <br>
 
-#### 1. Desempenho por Categoria Gamer e Periféricos
+#### 1. Desempenho por Linha de Produto
 
 | Categoria | Pedidos Entregues | Receita Bruta (R$) | Tíquete Médio (R$) | Avaliação Média |
 | :--- | :---: | :---: | :---: | :---: |
@@ -101,16 +131,16 @@ O estudo está organizado em três visões independentes para atender a diferent
 | Norte (AM, PA, RO, etc.) | 24,5 dias | R$ 42,10 | 22,4% | 3,55 / 5,0 |
 
 #### 3. Distribuição de Métodos de Pagamento
-* **Cartão de Crédito (78,4% da receita):** Forma predominante para hardware e consoles. A média de parcelamento observada é de 7 parcelas.
+* **Cartão de Crédito (78,4% da receita):** Forma predominante para hardware e consoles. A média de parcelamento observada é de 7 parcelas sem juros.
 * **PIX e Boleto Bancário (18,2% da receita):** Utilizado majoritariamente em compras à vista de acessórios e jogos em promoção.
-* **Vouchers e Vales (3,4% da receita):** Volume residual, apontando oportunidade para parcerias com cartões de presente digitais (PSN, Xbox, Steam).
+* **Vouchers e Vales (3,4% da receita):** Volume residual, apontando oportunidade para parcerias com cartões de presente digitais (PSN, Xbox Game Pass, Steam).
 
 #### 4. Metas Táticas Trimestrais
 
 * **Operações (Q1):** Reestruturar tabela de transportadoras para Norte e Nordeste, fixando meta de redução da taxa de atrasos para menos de 10%.
-* **Marketing e CRM (Q2):** Implementar réguas de e-mail automatizadas para quem comprou console nos últimos 30 dias, ofertando lançamentos com frete grátis.
+* **Marketing e CRM (Q2):** Implementar réguas de e-mail automatizadas para quem comprou console nos últimos 30 dias, ofertando lançamentos com frete reduzido.
 * **Produto e Checkout (Q3):** Lançar bundles de hardware com periféricos com desconto progressivo direto no carrinho de compras.
-* **Supply Chain (Q4):** Dimensionamento antecipado de estoque dos 10 consoles e periféricos mais vendidos para a Black Friday.
+* **Supply Chain (Q4):** Dimensionamento antecipado de estoque dos 10 consoles e periféricos mais vendidos para o pico de vendas de fim de ano.
 
 <br>
 </details>
@@ -119,7 +149,7 @@ O estudo está organizado em três visões independentes para atender a diferent
 
 <details>
 <summary><h3>3. Relatório Técnico Completo (Deep Dive)</h3>
-<i>Arquitetura do pipeline, modelo relacional, código SQL formatado com amostras de dados e explicação técnica.</i></summary>
+<i>Direcionada a líderes técnicos, engenheiros de dados e auditores. Arquitetura, modelo relacional, código SQL comentado e amostras de dados.</i></summary>
 <br>
 
 #### 1. Arquitetura da Solução
@@ -348,11 +378,11 @@ LIMIT 6;
    python pipeline_etl/01_download_data.py
    python pipeline_etl/02_ingest_postgres.py
    ```
-4. Gere ou atualize os gráficos analíticos:
+4. Gere os gráficos analíticos:
    ```bash
    python pipeline_etl/generate_charts.py
    ```
-5. Abra o DBeaver e execute as consultas contidas na pasta `sql/`.
+5. Conecte-se via DBeaver e execute as consultas contidas na pasta `sql/`.
 
 <br>
 </details>
