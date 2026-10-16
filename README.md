@@ -1,6 +1,7 @@
-# 📊 Portfólio de Banco de Dados & Análise de Dados
+# 🎮 Portfólio de Banco de Dados & Análise de Dados
 **Autor:** Victor Ramos  
-**Foco:** Engenharia de Dados / Análise de Dados / Banco de Dados Relacional  
+**Formação:** Jogos Digitais / Desenvolvimento de Games & Dados  
+**Foco:** Engenharia de Dados / Analytics Engineering / Modelagem Relacional  
 **LinkedIn:** [victorramosbraga](https://www.linkedin.com/in/victorramosbraga) | **Email:** jsvramos@live.com  
 
 ---
@@ -8,12 +9,12 @@
 ## 🎯 Sobre Este Repositório
 
 Bem-vindo ao meu repositório de portfólio prático voltado para a área de dados!  
-Aqui reúno projetos práticos desenvolvidos durante meus estudos e transição de carreira, focando em:
+Unindo minha formação no universo de **desenvolvimento de games** com a paixão por **engenharia e análise de dados**, desenvolvo projetos que transformam dados brutos em decisões de produto e negócios.
 
-- **Modelagem de Dados Relacional**: Diagramas Entidade-Relacionamento (DER), normalização (1FN, 2FN, 3FN), integridade referencial e indexação.
-- **SQL Avançado para Negócios**: Consultas analíticas com *Window Functions*, *Common Table Expressions (CTEs)*, *Subqueries*, *Views* e agregações complexas.
-- **Engenharia & Pipelines (ETL)**: Ingestão, limpeza, tratamento e carga automatizada de dados utilizando Python e SQL.
-- **Tomada de Decisão & KPIs**: Extração de métricas de negócios (LTV, Churn, Ticket Médio, MoM, Curva ABC).
+Cada projeto é estruturado em **3 níveis de visualização**:
+1. ⚡ **Apresentação Executiva (5 a 10 min):** Para gestores e decisores (principais KPIs e planos de ação).
+2. 📋 **Resumo Operacional (15 min):** Para analistas e coordenadores (tabelas e metas táticas).
+3. 🔬 **Relatório Técnico Completo (Deep Dive):** Para tech leads e engenheiros (modelagem DER, código SQL avançado e ETL).
 
 ---
 
