@@ -342,25 +342,61 @@ LIMIT 6;
 
 ---
 
+##### Consulta C: Automação Prescritiva Gamer Shield (Camada de Sabedoria DIKW)
+* **Objetivo:** Monitorar a esteira de entrega de tecnologia em tempo real, calcular o desvio de SLA e acionar preventivamente ações de retenção (voucher R$ 30,00) antes que o atraso gere avaliações negativas e churn.
+* **Técnica:** CTEs temporais com cálculo de desvio (`EXTRACT(EPOCH)`), agregação regional e cálculo de ROI de proteção de carteira.
+
+```sql
+SELECT 
+    regiao_macro,
+    COUNT(DISTINCT order_id) AS total_pedidos,
+    SUM(CASE WHEN status_gamer_shield = 'Risco Critico / Atrasado' THEN 1 ELSE 0 END) AS acionamentos,
+    ROUND(SUM(CASE WHEN status_gamer_shield = 'Risco Critico / Atrasado' THEN 1.0 ELSE 0.0 END) / COUNT(DISTINCT order_id) * 100, 2) AS taxa_acionamento_pct,
+    ROUND(SUM(custo_acao_voucher)::NUMERIC, 2) AS custo_vouchers,
+    ROUND(SUM(receita_protegida)::NUMERIC, 2) AS receita_protegida,
+    ROUND(SUM(receita_protegida)::NUMERIC / NULLIF(SUM(custo_acao_voucher), 0), 2) AS multiplicador_retorno
+FROM olist.vw_alertas_gamer_shield
+GROUP BY regiao_macro
+ORDER BY acionamentos DESC;
+```
+
+**Resultado Retornado pelo Banco (Execução Real no PostgreSQL):**
+
+| regiao_macro | total_pedidos | acionamentos | taxa_acionamento_pct | custo_vouchers (R$) | receita_protegida (R$) | multiplicador_retorno |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Sudeste** | 5.153 | 427 | 8,29% | R$ 12.810,00 | R$ 59.480,42 | **4,64x** |
+| **Sul** | 1.105 | 99 | 8,96% | R$ 2.970,00 | R$ 16.355,92 | **5,51x** |
+| **Nordeste** | 720 | 93 | 12,92% | R$ 2.790,00 | R$ 20.534,77 | **7,36x** |
+| **Centro-Oeste** | 405 | 35 | 8,64% | R$ 1.050,00 | R$ 4.161,25 | **3,96x** |
+| **Norte** | 163 | 19 | 11,66% | R$ 570,00 | R$ 1.988,79 | **3,49x** |
+
+---
+
 #### 4. Estrutura de Arquivos
 
 ```text
 01-olist-ecommerce-analytics/
 ├── data/
-│   └── raw/                       # 9 CSVs brutos da Olist (ignorado no Git)
+│   └── raw/                           # 9 CSVs brutos da Olist (ignorado no Git)
 ├── docs/
-│   └── img/                       # Graficos minimalistas de alta resolucao
-│       ├── 01_faturamento_mensal_games.png
-│       ├── 02_impacto_atraso_satisfacao.png
-│       └── 03_sla_regional_frete.png
+│   ├── img/                           # Graficos minimalistas de alta resolucao
+│   │   ├── 01_faturamento_mensal_games.png
+│   │   ├── 02_impacto_atraso_satisfacao.png
+│   │   └── 03_sla_regional_frete.png
+│   ├── dashboard_interativo.html      # Painel tatico de BI interativo
+│   ├── DATA_QUALITY_REPORT.md         # Relatorio automatizado de auditoria
+│   ├── GUIA_BI_DASHBOARDS.md          # Guia de conexao Power BI e Metabase
+│   └── ROTEIRO_APRESENTACAO_EXECUTIVA.md # Script de pitch de 5 minutos (C-Level)
 ├── pipeline_etl/
-│   ├── 01_download_data.py        # Download automatizado das bases
-│   ├── 02_ingest_postgres.py      # Carga estruturada com SQLAlchemy
-│   └── generate_charts.py         # Script gerador dos graficos analiticos
+│   ├── 01_download_data.py            # Download automatizado das bases
+│   ├── 02_ingest_postgres.py          # Carga estruturada com SQLAlchemy
+│   ├── 03_data_quality_check.py       # Auditoria de governanca e consistencia
+│   └── generate_charts.py             # Script gerador dos graficos analiticos
 ├── sql/
-│   ├── 01_schema_constraints.sql  # Chaves primarias, estrangeiras e indices
-│   ├── 02_analytical_views.sql    # Views semanticas desnormalizadas
-│   └── 03_business_analytics_kpis.sql # Consultas com Window Functions e CTEs
+│   ├── 01_schema_constraints.sql      # Chaves primarias, estrangeiras e indices
+│   ├── 02_analytical_views.sql        # Views semanticas desnormalizadas
+│   ├── 03_business_analytics_kpis.sql # Consultas com Window Functions e CTEs
+│   └── 04_prescriptive_gamer_shield.sql # Motor prescritivo do Gamer Shield
 └── README.md
 ```
 
@@ -375,16 +411,21 @@ LIMIT 6;
    ```bash
    pip install pandas sqlalchemy psycopg2-binary requests matplotlib
    ```
-3. Execute o download e a ingestão:
+3. Execute o download e a ingestão dos dados:
    ```bash
    python pipeline_etl/01_download_data.py
    python pipeline_etl/02_ingest_postgres.py
    ```
-4. Gere os gráficos analíticos:
+4. Execute os testes automatizados de qualidade de dados (Data Quality):
+   ```bash
+   python pipeline_etl/03_data_quality_check.py
+   ```
+5. Gere os gráficos analíticos:
    ```bash
    python pipeline_etl/generate_charts.py
    ```
-5. Conecte-se via DBeaver e execute as consultas contidas na pasta `sql/`.
+6. Conecte-se via DBeaver ou psql e execute as consultas contidas na pasta `sql/`.
+7. Abra o arquivo `docs/dashboard_interativo.html` no seu navegador para explorar os dados interativamente.
 
 <br>
 </details>
