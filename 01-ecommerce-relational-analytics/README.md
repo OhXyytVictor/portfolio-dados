@@ -1,5 +1,8 @@
 # 🛒 Projeto 01: Modelagem Relacional & Consultas Analíticas de E-Commerce
 
+**Autor:** Victor Ramos  
+**LinkedIn:** [victorramosbraga](https://www.linkedin.com/in/victorramosbraga) | **Email:** jsvramos@live.com  
+
 ## 📌 Visão Geral do Projeto
 
 Este projeto demonstra a modelagem física e a extração de inteligência de negócios a partir de um banco de dados relacional de uma operação de comércio eletrônico (E-commerce).

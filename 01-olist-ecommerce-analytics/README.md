@@ -1,6 +1,7 @@
 # 🇧🇷 Pipeline de Dados & Análise de E-commerce Brasileiro (Olist)
 
 **Autor:** Victor Ramos  
+**LinkedIn:** [victorramosbraga](https://www.linkedin.com/in/victorramosbraga) | **Email:** jsvramos@live.com  
 **Foco:** Engenharia de Dados / Analytics Engineering / SQL para Negócios  
 **Ferramentas:** Python 3, PostgreSQL 18, SQLAlchemy, Pandas, DBeaver Community, Git  
 **Dataset:** [Brazilian E-Commerce Public Dataset by Olist (Kaggle)](https://www.kaggle.com/olistbr/brazilian-ecommerce) (~100k pedidos reais)
@@ -61,7 +62,7 @@ erDiagram
     }
 
     ORDER_ITEMS {
-        varchar order_id PK_FK
+        varchar order_id FK
         int order_item_id PK
         varchar product_id FK
         varchar seller_id FK
@@ -100,13 +101,13 @@ erDiagram
 ## 💡 4. Principais Insights de Negócio Extraídos
 
 ### 🚚 Atrasos Logísticos vs. Satisfação do Cliente (NPS / Reviews)
-* Pedidos entregues **no prazo ou antecipados** obtêm uma nota média de satisfação de **4.29 estrelas** (com 60%+ de avaliações nota 5).
-* Quando há **atraso na entrega**, a nota média despenca para **2.18 estrelas**, e o índice de notas 1 (detratores) salta para mais de 55%.
-* *Recomendação Estratégica:* A experiência do cliente na Olist é prioritariamente dependente da eficiência da malha de transportes parceira.
+* **Entrega no Prazo ou Antecipada (88.232 pedidos):** Tempo médio de trânsito de **10.8 dias** e nota média de satisfação de **4.21 estrelas**.
+* **Entrega com Atraso (7.600 pedidos):** Tempo médio salta para **31.3 dias** e a nota média despenca para **2.54 estrelas**.
+* *Recomendação Estratégica:* A experiência e retenção do cliente na Olist são prioritariamente dependentes do cumprimento dos prazos pelas transportadoras.
 
 ### 👥 Segmentação RFM de Clientes
 * Utilizando a técnica **RFM (Recência, Frequência e Valor Monetário)** via Window Function `NTILE(4)`, identificamos que a maior parte dos compradores da Olist realiza apenas 1 compra esporádica (modelo típico de marketplace aberto).
-* Estratégias de *retargeting* e cupons de recompra para clientes no estágio "Potencial" têm o maior ROI estimado.
+* Clientes com pontuação RFM máxima concentram pedidos de ticket médio elevado (especialmente nas categorias de informática e móveis de escritório).
 
 ---
 

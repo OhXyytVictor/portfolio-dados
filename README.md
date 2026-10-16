@@ -1,7 +1,7 @@
 # 📊 Portfólio de Banco de Dados & Análise de Dados
 **Autor:** Victor Ramos  
 **Foco:** Engenharia de Dados / Análise de Dados / Banco de Dados Relacional  
-**LinkedIn:** [Seu Perfil Aqui](https://linkedin.com) | **Email:** jsvramos@live.com  
+**LinkedIn:** [victorramosbraga](https://www.linkedin.com/in/victorramosbraga) | **Email:** jsvramos@live.com  
 
 ---
 
